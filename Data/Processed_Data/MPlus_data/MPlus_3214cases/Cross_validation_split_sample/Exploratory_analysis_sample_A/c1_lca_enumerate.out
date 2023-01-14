@@ -1,0 +1,661 @@
+Mplus VERSION 8.5 (Mac)
+MUTHEN & MUTHEN
+09/19/2022   1:07 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  C1_LCA_enumerate
+  DATA:
+  FILE = "./c_lca_enumerate.dat";
+
+  VARIABLE:
+  NAMES = idauniq W4_Smoke W5_Smoke W6_Smoke W7_Smoke W8_Smoke W4_Drink W5_Drink
+       W6_Drink W7_Drink W8_Drink W4_PA W5_PA W6_PA W7_PA W8_PA W4_FV W5_FV W6_FV
+       W7_FV W8_FV Weights Female Age Pat_Int Pat_Hig Self_Int Self_Hig Edu_Upp
+       Edu_Ter Wealth_2 Wealth_3 Eye_4 Circul_4 Endocr_4 Muscul_4 Respir_4 Neopla_4
+       Nervou_4 Mental_4 Multi_4 CMulti_4 Luncan_4 Multi Eye Circul Endocr Muscul
+       Respir Neopla Nervou Mental CMulti Luncan;
+   MISSING=.;
+   CATEGORICAL = W4_Smoke,W5_Smoke,W6_Smoke,W7_Smoke,W8_Smoke,
+  W4_Drink,W5_Drink,W6_Drink,W7_Drink,W8_Drink,
+  W4_PA,W5_PA,W6_PA,W7_PA,W8_PA,W4_FV,W5_FV,W6_FV,
+  W7_FV,W8_FV;
+  USEVARIABLES = W4_Smoke,W5_Smoke,W6_Smoke,W7_Smoke,W8_Smoke,
+  W4_Drink,W5_Drink,W6_Drink,W7_Drink,W8_Drink,
+  W4_PA,W5_PA,W6_PA,W7_PA,W8_PA,W4_FV,W5_FV,W6_FV,
+  W7_FV,W8_FV,Weights;
+  USEOBSERVATIONS = Female NE -99 AND Age NE -99
+    AND  Pat_Int NE -99 AND
+  Pat_Hig NE -99 AND Self_Int NE -99 AND
+  Self_Hig NE -99 AND Edu_Upp NE -99 AND
+  Edu_Ter NE -99 AND
+  Wealth_2 NE -99 AND Wealth_3 NE -99;
+          WEIGHT        = Weights;
+  MISSING ARE ALL (-99);
+          classes = c(1);
+  ANALYSIS:
+  estimator = mlr;
+      type = mixture;
+      starts = 500 100;
+      STITERATIONS=20;
+  LRTSTARTS = 50 10 400 20;
+  OUTPUT:
+  TECH11 TECH14
+  PLOT:
+  type = plot3;
+      series is W4_Smoke(2) W5_Smoke(3) W6_Smoke(4) W7_Smoke(5)
+      W8_Smoke(6) W4_Drink(7) W5_Drink(8)
+      W6_Drink(9) W7_Drink(10)
+      W8_Drink(11) W4_PA(12) W5_PA(13)
+      W6_PA(14) W7_PA(15) W8_PA(16)
+      W4_FV(17) W5_FV(18) W6_FV(19)
+      W7_FV(20) W8_FV(21);
+
+
+
+*** WARNING
+  One or more observations has a value of 0 for the WEIGHT variable.
+*** WARNING in OUTPUT command
+  TECH11 option is not available for TYPE=MIXTURE with only one class.
+  Request for TECH11 is ignored.
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with weights.
+  Request for TECH14 is ignored.
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+C1_LCA_enumerate
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1148
+
+Number of dependent variables                                   20
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   W4_SMOKE    W5_SMOKE    W6_SMOKE    W7_SMOKE    W8_SMOKE    W4_DRINK
+   W5_DRINK    W6_DRINK    W7_DRINK    W8_DRINK    W4_PA       W5_PA
+   W6_PA       W7_PA       W8_PA       W4_FV       W5_FV       W6_FV
+   W7_FV       W8_FV
+
+Categorical latent variables
+   C
+
+Variables with special functions
+
+  Weight variable       WEIGHTS
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                        500
+  Number of final stage optimizations                          100
+  Number of initial stage iterations                            20
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Link                                                         LOGIT
+
+Input data file(s)
+  ./c_lca_enumerate.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns           272
+     Number of y missing data patterns           0
+     Number of u missing data patterns         272
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              W4_SMOKE      W5_SMOKE      W6_SMOKE      W7_SMOKE      W8_SMOKE
+              ________      ________      ________      ________      ________
+ W4_SMOKE       0.953
+ W5_SMOKE       0.571         0.577
+ W6_SMOKE       0.584         0.575         0.590
+ W7_SMOKE       0.594         0.575         0.589         0.602
+ W8_SMOKE       0.604         0.576         0.589         0.599         0.612
+ W4_DRINK       0.830         0.497         0.510         0.519         0.530
+ W5_DRINK       0.853         0.515         0.526         0.536         0.545
+ W6_DRINK       0.833         0.502         0.511         0.522         0.531
+ W7_DRINK       0.823         0.503         0.516         0.523         0.531
+ W8_DRINK       0.827         0.514         0.524         0.532         0.539
+ W4_PA          0.882         0.529         0.541         0.553         0.560
+ W5_PA          0.868         0.522         0.535         0.546         0.553
+ W6_PA          0.896         0.536         0.547         0.560         0.569
+ W7_PA          0.891         0.533         0.546         0.557         0.566
+ W8_PA          0.884         0.529         0.543         0.553         0.564
+ W4_FV          0.889         0.530         0.542         0.553         0.564
+ W5_FV          0.916         0.552         0.564         0.575         0.584
+ W6_FV          0.898         0.541         0.552         0.564         0.575
+ W7_FV          0.895         0.543         0.557         0.565         0.576
+ W8_FV          0.908         0.553         0.564         0.575         0.582
+
+
+           Covariance Coverage
+              W4_DRINK      W5_DRINK      W6_DRINK      W7_DRINK      W8_DRINK
+              ________      ________      ________      ________      ________
+ W4_DRINK       0.868
+ W5_DRINK       0.813         0.893
+ W6_DRINK       0.794         0.823         0.871
+ W7_DRINK       0.778         0.814         0.805         0.861
+ W8_DRINK       0.787         0.820         0.811         0.804         0.868
+ W4_PA          0.803         0.832         0.814         0.802         0.808
+ W5_PA          0.799         0.821         0.804         0.791         0.799
+ W6_PA          0.821         0.837         0.821         0.812         0.820
+ W7_PA          0.815         0.841         0.820         0.806         0.817
+ W8_PA          0.812         0.832         0.812         0.805         0.812
+ W4_FV          0.868         0.838         0.818         0.805         0.814
+ W5_FV          0.841         0.891         0.841         0.831         0.834
+ W6_FV          0.821         0.846         0.870         0.821         0.825
+ W7_FV          0.811         0.838         0.822         0.859         0.815
+ W8_FV          0.832         0.855         0.841         0.828         0.867
+
+
+           Covariance Coverage
+              W4_PA         W5_PA         W6_PA         W7_PA         W8_PA
+              ________      ________      ________      ________      ________
+ W4_PA          0.923
+ W5_PA          0.855         0.914
+ W6_PA          0.869         0.866         0.936
+ W7_PA          0.871         0.861         0.887         0.936
+ W8_PA          0.860         0.848         0.873         0.875         0.927
+ W4_FV          0.859         0.854         0.878         0.871         0.865
+ W5_FV          0.889         0.877         0.900         0.902         0.890
+ W6_FV          0.869         0.859         0.882         0.882         0.873
+ W7_FV          0.866         0.852         0.878         0.874         0.869
+ W8_FV          0.882         0.875         0.897         0.894         0.886
+
+
+           Covariance Coverage
+              W4_FV         W5_FV         W6_FV         W7_FV         W8_FV
+              ________      ________      ________      ________      ________
+ W4_FV          0.931
+ W5_FV          0.901         0.960
+ W6_FV          0.878         0.907         0.941
+ W7_FV          0.871         0.902         0.888         0.935
+ W8_FV          0.892         0.917         0.904         0.896         0.955
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    W4_SMOKE
+      Category 1    0.892          976.765
+      Category 2    0.108          118.206
+    W5_SMOKE
+      Category 1    0.848          583.386
+      Category 2    0.152          104.276
+    W6_SMOKE
+      Category 1    0.866          607.498
+      Category 2    0.134           93.855
+    W7_SMOKE
+      Category 1    0.878          625.935
+      Category 2    0.122           86.764
+    W8_SMOKE
+      Category 1    0.899          654.007
+      Category 2    0.101           73.401
+    W4_DRINK
+      Category 1    0.179          175.707
+      Category 2    0.470          461.935
+      Category 3    0.307          301.456
+      Category 4    0.045           44.039
+    W5_DRINK
+      Category 1    0.188          190.968
+      Category 2    0.430          436.148
+      Category 3    0.331          335.457
+      Category 4    0.051           51.798
+    W6_DRINK
+      Category 1    0.204          200.827
+      Category 2    0.442          436.125
+      Category 3    0.306          302.091
+      Category 4    0.048           46.939
+    W7_DRINK
+      Category 1    0.221          213.402
+      Category 2    0.450          435.221
+      Category 3    0.281          272.072
+      Category 4    0.048           46.421
+    W8_DRINK
+      Category 1    0.219          213.229
+      Category 2    0.458          445.613
+      Category 3    0.285          277.048
+      Category 4    0.038           36.878
+    W4_PA
+      Category 1    0.003            2.998
+      Category 2    0.477          499.415
+      Category 3    0.212          221.628
+      Category 4    0.308          321.931
+    W5_PA
+      Category 1    0.005            5.475
+      Category 2    0.486          506.718
+      Category 3    0.236          245.659
+      Category 4    0.273          284.835
+    W6_PA
+      Category 1    0.008            8.701
+      Category 2    0.493          525.414
+      Category 3    0.193          205.243
+      Category 4    0.306          325.651
+    W7_PA
+      Category 1    0.007            7.612
+      Category 2    0.532          564.828
+      Category 3    0.191          203.355
+      Category 4    0.270          286.764
+    W8_PA
+      Category 1    0.005            5.735
+      Category 2    0.555          585.074
+      Category 3    0.176          185.543
+      Category 4    0.264          278.436
+    W4_FV
+      Category 1    0.406          431.302
+      Category 2    0.594          632.047
+    W5_FV
+      Category 1    0.402          443.170
+      Category 2    0.598          658.122
+    W6_FV
+      Category 1    0.372          400.325
+      Category 2    0.628          676.571
+    W7_FV
+      Category 1    0.345          369.749
+      Category 2    0.655          701.535
+    W8_FV
+      Category 1    0.368          400.871
+      Category 2    0.632          688.479
+
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -16392.129  unperturbed      0
+          -16392.129  285380           1
+          -16392.129  971853           402
+          -16392.129  471040           403
+          -16392.129  605565           404
+          -16392.129  596257           405
+          -16392.129  926797           406
+          -16392.129  112586           494
+          -16392.129  772131           407
+          -16392.129  55115            408
+          -16392.129  605161           409
+          -16392.129  652266           490
+          -16392.129  746978           410
+          -16392.129  85734            411
+          -16392.129  918558           412
+          -16392.129  275475           413
+          -16392.129  736574           414
+          -16392.129  399508           415
+          -16392.129  791285           416
+          -16392.129  665121           417
+          -16392.129  298275           418
+          -16392.129  802682           419
+          -16392.129  749635           420
+          -16392.129  226322           478
+          -16392.129  484406           421
+          -16392.129  173191           422
+          -16392.129  798821           423
+          -16392.129  216565           474
+          -16392.129  505879           424
+          -16392.129  762461           425
+          -16392.129  937885           426
+          -16392.129  971693           470
+          -16392.129  699554           427
+          -16392.129  584397           428
+          -16392.129  153394           429
+          -16392.129  238906           430
+          -16392.129  853195           431
+          -16392.129  518828           432
+          -16392.129  783102           433
+          -16392.129  68850            462
+          -16392.129  640833           434
+          -16392.129  283492           435
+          -16392.129  399380           436
+          -16392.129  359578           458
+          -16392.129  317640           437
+          -16392.129  375590           438
+          -16392.129  631413           439
+          -16392.129  263049           454
+          -16392.129  193569           440
+          -16392.129  741484           441
+          -16392.129  404510           442
+          -16392.129  217130           443
+          -16392.129  888905           444
+          -16392.129  502532           445
+          -16392.129  508482           446
+          -16392.129  263221           447
+          -16392.129  354624           448
+          -16392.129  614535           449
+          -16392.129  408713           450
+          -16392.129  188640           451
+          -16392.129  582296           452
+          -16392.129  879211           453
+          -16392.129  224950           455
+          -16392.129  922596           456
+          -16392.129  769907           457
+          -16392.129  539751           459
+          -16392.129  662718           460
+          -16392.129  345726           461
+          -16392.129  965639           463
+          -16392.129  349360           464
+          -16392.129  320494           465
+          -16392.129  898745           466
+          -16392.129  416463           467
+          -16392.129  862607           468
+          -16392.129  790059           469
+          -16392.129  315029           471
+          -16392.129  69413            472
+          -16392.129  376411           473
+          -16392.129  988761           475
+          -16392.129  714455           476
+          -16392.129  802256           477
+          -16392.129  823392           479
+          -16392.129  392751           480
+          -16392.129  863691           481
+          -16392.129  787985           482
+          -16392.129  53621            483
+          -16392.129  366533           484
+          -16392.129  354395           486
+          -16392.129  252949           487
+          -16392.129  978061           488
+          -16392.129  618760           489
+          -16392.129  972430           491
+          -16392.129  922042           492
+          -16392.129  887580           493
+          -16392.129  860102           495
+          -16392.129  335485           496
+          -16392.129  978781           497
+          -16392.129  485483           498
+          -16392.129  319575           499
+          -16392.129  140442           500
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE CHI-SQUARE TEST CANNOT BE COMPUTED BECAUSE THE FREQUENCY TABLE FOR THE
+     LATENT CLASS INDICATOR MODEL PART IS TOO LARGE.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       40
+
+Loglikelihood
+
+          H0 Value                      -16392.129
+          H0 Scaling Correction Factor      1.3327
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   32864.258
+          Bayesian (BIC)                 33066.089
+          Sample-Size Adjusted BIC       32939.036
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1       1148.00000          1.00000
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1       1148.00000          1.00000
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1             1148          1.00000
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1
+
+    1   1.000
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1
+
+    1   1.000
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1
+
+    1      0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Thresholds
+    W4_SMOKE$1         2.112      0.120     17.579      0.000
+    W5_SMOKE$1         1.722      0.128     13.444      0.000
+    W6_SMOKE$1         1.868      0.134     13.888      0.000
+    W7_SMOKE$1         1.976      0.140     14.161      0.000
+    W8_SMOKE$1         2.187      0.151     14.444      0.000
+    W4_DRINK$1        -1.525      0.099    -15.436      0.000
+    W4_DRINK$2         0.613      0.074      8.268      0.000
+    W4_DRINK$3         3.060      0.164     18.662      0.000
+    W5_DRINK$1        -1.461      0.093    -15.641      0.000
+    W5_DRINK$2         0.482      0.073      6.640      0.000
+    W5_DRINK$3         2.922      0.149     19.565      0.000
+    W6_DRINK$1        -1.363      0.089    -15.253      0.000
+    W6_DRINK$2         0.602      0.074      8.105      0.000
+    W6_DRINK$3         2.996      0.158     18.929      0.000
+    W7_DRINK$1        -1.262      0.090    -14.056      0.000
+    W7_DRINK$2         0.711      0.076      9.377      0.000
+    W7_DRINK$3         2.987      0.163     18.382      0.000
+    W8_DRINK$1        -1.270      0.088    -14.407      0.000
+    W8_DRINK$2         0.741      0.076      9.714      0.000
+    W8_DRINK$3         3.234      0.183     17.637      0.000
+    W4_PA$1           -5.852      0.580    -10.095      0.000
+    W4_PA$2           -0.079      0.070     -1.125      0.261
+    W4_PA$3            0.811      0.075     10.759      0.000
+    W5_PA$1           -5.244      0.612     -8.571      0.000
+    W5_PA$2           -0.035      0.070     -0.501      0.616
+    W5_PA$3            0.979      0.077     12.732      0.000
+    W6_PA$1           -4.799      0.455    -10.538      0.000
+    W6_PA$2            0.006      0.069      0.087      0.930
+    W6_PA$3            0.820      0.075     10.957      0.000
+    W7_PA$1           -4.931      0.524     -9.403      0.000
+    W7_PA$2            0.155      0.070      2.233      0.026
+    W7_PA$3            0.995      0.077     12.936      0.000
+    W8_PA$1           -5.209      0.452    -11.534      0.000
+    W8_PA$2            0.242      0.070      3.470      0.001
+    W8_PA$3            1.025      0.078     13.201      0.000
+    W4_FV$1           -0.382      0.071     -5.356      0.000
+    W5_FV$1           -0.395      0.071     -5.604      0.000
+    W6_FV$1           -0.525      0.072     -7.332      0.000
+    W7_FV$1           -0.640      0.074     -8.641      0.000
+    W8_FV$1           -0.541      0.072     -7.559      0.000
+
+
+RESULTS IN PROBABILITY SCALE
+
+Latent Class 1
+
+ W4_SMOKE
+    Category 1         0.892      0.012     77.109      0.000
+    Category 2         0.108      0.012      9.332      0.000
+ W5_SMOKE
+    Category 1         0.848      0.016     51.493      0.000
+    Category 2         0.152      0.016      9.204      0.000
+ W6_SMOKE
+    Category 1         0.866      0.016     55.570      0.000
+    Category 2         0.134      0.016      8.585      0.000
+ W7_SMOKE
+    Category 1         0.878      0.015     58.868      0.000
+    Category 2         0.122      0.015      8.160      0.000
+ W8_SMOKE
+    Category 1         0.899      0.014     65.447      0.000
+    Category 2         0.101      0.014      7.345      0.000
+ W4_DRINK
+    Category 1         0.179      0.015     12.324      0.000
+    Category 2         0.470      0.018     26.273      0.000
+    Category 3         0.307      0.016     18.806      0.000
+    Category 4         0.045      0.007      6.385      0.000
+ W5_DRINK
+    Category 1         0.188      0.014     13.186      0.000
+    Category 2         0.430      0.017     24.626      0.000
+    Category 3         0.331      0.017     19.850      0.000
+    Category 4         0.051      0.007      7.055      0.000
+ W6_DRINK
+    Category 1         0.204      0.014     14.049      0.000
+    Category 2         0.442      0.018     24.778      0.000
+    Category 3         0.306      0.016     18.703      0.000
+    Category 4         0.048      0.007      6.634      0.000
+ W7_DRINK
+    Category 1         0.221      0.015     14.293      0.000
+    Category 2         0.450      0.018     25.167      0.000
+    Category 3         0.281      0.016     17.554      0.000
+    Category 4         0.048      0.007      6.464      0.000
+ W8_DRINK
+    Category 1         0.219      0.015     14.525      0.000
+    Category 2         0.458      0.018     25.700      0.000
+    Category 3         0.285      0.016     17.674      0.000
+    Category 4         0.038      0.007      5.669      0.000
+ W4_PA
+    Category 1         0.003      0.002      1.730      0.084
+    Category 2         0.477      0.017     27.332      0.000
+    Category 3         0.212      0.014     14.674      0.000
+    Category 4         0.308      0.016     19.176      0.000
+ W5_PA
+    Category 1         0.005      0.003      1.643      0.100
+    Category 2         0.486      0.018     27.745      0.000
+    Category 3         0.236      0.015     15.667      0.000
+    Category 4         0.273      0.015     17.901      0.000
+ W6_PA
+    Category 1         0.008      0.004      2.214      0.027
+    Category 2         0.493      0.017     28.495      0.000
+    Category 3         0.193      0.014     14.080      0.000
+    Category 4         0.306      0.016     19.248      0.000
+ W7_PA
+    Category 1         0.007      0.004      1.921      0.055
+    Category 2         0.532      0.017     30.703      0.000
+    Category 3         0.191      0.014     14.049      0.000
+    Category 4         0.270      0.015     17.802      0.000
+ W8_PA
+    Category 1         0.005      0.002      2.226      0.026
+    Category 2         0.555      0.017     32.284      0.000
+    Category 3         0.176      0.013     13.338      0.000
+    Category 4         0.264      0.015     17.491      0.000
+ W4_FV
+    Category 1         0.406      0.017     23.579      0.000
+    Category 2         0.594      0.017     34.554      0.000
+ W5_FV
+    Category 1         0.402      0.017     23.713      0.000
+    Category 2         0.598      0.017     35.215      0.000
+ W6_FV
+    Category 1         0.372      0.017     22.240      0.000
+    Category 2         0.628      0.017     37.587      0.000
+ W7_FV
+    Category 1         0.345      0.017     20.604      0.000
+    Category 2         0.655      0.017     39.092      0.000
+ W8_FV
+    Category 1         0.368      0.017     22.115      0.000
+    Category 2         0.632      0.017     37.982      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.198E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Sample proportions and estimated probabilities
+
+     Beginning Time:  13:07:07
+        Ending Time:  13:07:09
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

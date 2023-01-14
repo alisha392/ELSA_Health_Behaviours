@@ -1,0 +1,1405 @@
+Mplus VERSION 8.5 (Mac)
+MUTHEN & MUTHEN
+09/14/2022   9:51 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  Step3 - 3step LSAY - Lab9
+  DATA:
+  FILE = "./Step1_MPlus_Outcomes.dat";
+
+  VARIABLE:
+  NAMES = W4_SMOKE W5_SMOKE W6_SMOKE W7_SMOKE W8_SMOKE W4_DRINK W5_DRINK W6_DRINK
+       W7_DRINK W8_DRINK W4_PA W5_PA W6_PA W7_PA W8_PA W4_FV W5_FV W6_FV W7_FV W8_FV
+       FEMALE AGE PAT_INT PAT_HIG SELF_INT SELF_HIG EDU_UPP EDU_TER WEALTH_2 WEALTH_3
+       EYE_4 CIRCUL_4 ENDOCR_4 MUSCUL_4 RESPIR_4 NEOPLA_4 NERVOU_4 MENTAL_4 MULTI_4
+       CMULTI_4 LUNCAN_4 MULTI EYE CIRCUL ENDOCR MUSCUL RESPIR NEOPLA NERVOU MENTAL
+       CMULTI LUNCAN CPROB1 CPROB2 CPROB3 CPROB4 CPROB5 CPROB6 N WEIGHTS;
+   MISSING=.;
+   nominal=N;
+    usevar = n;
+    USEOBSERVATIONS = Female NE -99 AND Age NE -99 AND
+    Pat_Int NE -99 AND
+  Pat_Hig NE -99 AND Self_Int NE -99 AND
+  Self_Hig NE -99 AND Edu_Upp NE -99 AND
+  Edu_Ter NE -99 AND
+  Wealth_2 NE -99 AND Wealth_3 NE -99;
+    missing are all (-99);
+    classes = c(6);
+    CATEGORICAL = Multi;
+    usevar =  Multi Female;
+    WEIGHT  = Weights;
+  ANALYSIS:
+  estimator = mlr;
+    type = mixture;
+    starts = 0;
+    ITERATIONS = 1000;
+  MODEL:
+  %OVERALL%
+
+     %C#1%
+     [n#1@7.881];
+     [n#2@-3.045];
+     [n#3@5.173];
+     [n#4@5.679];
+     [n#5@1.278];
+
+   [Multi$1](m1);
+
+    %C#2%
+   [n#1@-3.432];
+   [n#2@4.228];
+   [n#3@-1.99];
+   [n#4@-0.388];
+   [n#5@-0.652];
+
+   [Multi$1](m2);
+
+
+   %C#3%
+  [n#1@-0.274];
+   [n#2@-6.506];
+   [n#3@3.603];
+   [n#4@-0.403];
+   [n#5@0.924];
+
+
+   [Multi$1](m3);
+
+
+    %C#4%
+   [n#1@-0.122];
+   [n#2@-3.083];
+   [n#3@-0.078];
+   [n#4@3.454];
+   [n#5@0.381];
+
+
+   [Multi$1](m4);
+
+
+
+    %C#5%
+   [n#1@-5.754];
+   [n#2@-4.304];
+   [n#3@0.048];
+   [n#4@-0.849];
+   [n#5@3.021];
+
+
+   [Multi$1](m5);
+
+
+     %C#6%
+   [n#1@-8.392];
+   [n#2@-6.947];
+   [n#3@-3.383];
+   [n#4@-3.497];
+   [n#5@-2.498];
+
+     [Multi$1](m6);
+  MODEL CONSTRAINT:
+  New (diff12 diff13 diff23 diff14
+    diff24 diff34 diff15 diff16 diff25
+    diff26 diff35 diff36 diff45
+    diff46 diff56);
+    diff12 = m1-m2;  ! test pairwise distal mean differences
+    diff13 = m1-m3;
+    diff23 = m2-m3;
+    diff14 = m1-m4;
+    diff24 = m2-m4;
+    diff34 = m3-m4;
+    diff15 = m1-m5;
+    diff16 = m1-m6;
+    diff25 = m2-m5;
+    diff26 = m2-m6;
+    diff35 = m3-m5;
+    diff36 = m3-m6;
+    diff45 = m4-m5;
+    diff46 = m4-m6;
+    diff56 = m5-m6;
+
+
+  MODEL TEST:
+   0=m1-m2;
+     0=m2-m3;
+     0=m3-m4; ! omnibus test of distal thresholds
+     0=m4-m5;
+     0=m5-m6;
+  OUTPUT:
+  sampstat residual TECH11 TECH14;
+
+
+
+*** WARNING in MODEL command
+  All variables are uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING
+  One or more observations has a value of 0 for the WEIGHT variable.
+*** WARNING in OUTPUT command
+  TECH11 option is not available in conjunction with nonlinear constraints
+  through the use of MODEL CONSTRAINT.  Request for TECH11 is ignored.
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with weights.
+  Request for TECH14 is ignored.
+   4 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Step3 - 3step LSAY - Lab9
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3787
+
+Number of dependent variables                                    3
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Continuous
+   FEMALE
+
+  Binary and ordered categorical (ordinal)
+   MULTI
+
+  Unordered categorical (nominal)
+   N
+
+Categorical latent variables
+   C
+
+Variables with special functions
+
+  Weight variable       WEIGHTS
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                1000
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Link                                                         LOGIT
+
+Input data file(s)
+  ./Step1_MPlus_Outcomes.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              FEMALE
+              ________
+ FEMALE         1.000
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    MULTI
+      Category 1    0.606         2294.993
+      Category 2    0.394         1492.007
+    N
+      Category 1    0.091          346.119
+      Category 2    0.101          384.354
+      Category 3    0.211          799.651
+      Category 4    0.193          731.576
+      Category 5    0.232          876.911
+      Category 6    0.171          648.388
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              FEMALE
+              ________
+                0.521
+
+
+           Covariances
+              FEMALE
+              ________
+ FEMALE         0.250
+
+
+           Correlations
+              FEMALE
+              ________
+ FEMALE         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -2745.173
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     FEMALE                0.521      -0.085       0.000   44.57%       0.000      0.000      1.000
+            3787.000       0.250      -1.993       1.000   55.43%       1.000      1.000
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.186D-14.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 18, [ C#5 ]
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       18
+
+Loglikelihood
+
+          H0 Value                      -11663.689
+          H0 Scaling Correction Factor      1.2233
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   23363.378
+          Bayesian (BIC)                 23475.686
+          Sample-Size Adjusted BIC       23418.490
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes
+
+          Pearson Chi-Square
+
+          Value                              0.000
+          Degrees of freedom cannot be computed for this model part.
+
+          Likelihood Ratio Chi-Square
+
+          Value                              0.000
+          Degrees of freedom cannot be computed for this model part.
+
+Wald Test of Parameter Constraints
+
+          Value                            125.858
+          Degrees of Freedom                     5
+          P-Value                           0.0000
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        368.99797          0.09744
+       2        395.56042          0.10445
+       3        795.67276          0.21011
+       4        735.81637          0.19430
+       5        841.16385          0.22212
+       6        649.78862          0.17158
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        368.99797          0.09744
+       2        395.56042          0.10445
+       3        795.67276          0.21011
+       4        735.81637          0.19430
+       5        841.16385          0.22212
+       6        649.78862          0.17158
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              346          0.09140
+       2              384          0.10149
+       3              800          0.21116
+       4              732          0.19318
+       5              877          0.23156
+       6              648          0.17121
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.739
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6
+
+    1   0.904    0.001    0.042    0.052    0.000    0.000
+    2   0.000    0.995    0.000    0.002    0.001    0.001
+    3   0.026    0.001    0.877    0.024    0.048    0.024
+    4   0.047    0.005    0.017    0.884    0.022    0.024
+    5   0.000    0.003    0.055    0.034    0.854    0.053
+    6   0.000    0.009    0.030    0.032    0.056    0.873
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6
+
+    1   0.848    0.000    0.057    0.094    0.001    0.000
+    2   0.000    0.967    0.002    0.010    0.007    0.014
+    3   0.018    0.000    0.881    0.016    0.060    0.024
+    4   0.025    0.001    0.026    0.879    0.041    0.029
+    5   0.000    0.001    0.046    0.019    0.891    0.043
+    6   0.000    0.001    0.030    0.027    0.072    0.871
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6
+
+    1      7.835   -3.058    5.134    5.632    1.227    0.000
+    2     -3.413    4.226   -1.992   -0.384   -0.658    0.000
+    3     -0.271   -6.512    3.596   -0.416    0.912    0.000
+    4     -0.148   -3.098   -0.099    3.427    0.356    0.000
+    5     -5.697   -4.292    0.051   -0.810    3.020    0.000
+    6     -8.355   -6.944   -3.382   -3.474   -2.499    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Means
+    FEMALE             0.326      0.029     11.319      0.000
+
+ Means
+    N#1                7.881      0.000    999.000    999.000
+    N#2               -3.045      0.000    999.000    999.000
+    N#3                5.173      0.000    999.000    999.000
+    N#4                5.679      0.000    999.000    999.000
+    N#5                1.278      0.000    999.000    999.000
+
+ Thresholds
+    MULTI$1            1.481      0.158      9.394      0.000
+
+ Variances
+    FEMALE             0.230      0.003     80.044      0.000
+
+Latent Class 2
+
+ Means
+    FEMALE             0.549      0.030     18.082      0.000
+
+ Means
+    N#1               -3.432      0.000    999.000    999.000
+    N#2                4.228      0.000    999.000    999.000
+    N#3               -1.990      0.000    999.000    999.000
+    N#4               -0.388      0.000    999.000    999.000
+    N#5               -0.652      0.000    999.000    999.000
+
+ Thresholds
+    MULTI$1            0.419      0.124      3.380      0.001
+
+ Variances
+    FEMALE             0.230      0.003     80.044      0.000
+
+Latent Class 3
+
+ Means
+    FEMALE             0.526      0.022     23.392      0.000
+
+ Means
+    N#1               -0.274      0.000    999.000    999.000
+    N#2               -6.506      0.000    999.000    999.000
+    N#3                3.603      0.000    999.000    999.000
+    N#4               -0.403      0.000    999.000    999.000
+    N#5                0.924      0.000    999.000    999.000
+
+ Thresholds
+    MULTI$1            0.929      0.097      9.570      0.000
+
+ Variances
+    FEMALE             0.230      0.003     80.044      0.000
+
+Latent Class 4
+
+ Means
+    FEMALE             0.327      0.022     14.921      0.000
+
+ Means
+    N#1               -0.122      0.000    999.000    999.000
+    N#2               -3.083      0.000    999.000    999.000
+    N#3               -0.078      0.000    999.000    999.000
+    N#4                3.454      0.000    999.000    999.000
+    N#5                0.381      0.000    999.000    999.000
+
+ Thresholds
+    MULTI$1            0.536      0.097      5.529      0.000
+
+ Variances
+    FEMALE             0.230      0.003     80.044      0.000
+
+Latent Class 5
+
+ Means
+    FEMALE             0.705      0.022     31.657      0.000
+
+ Means
+    N#1               -5.754      0.000    999.000    999.000
+    N#2               -4.304      0.000    999.000    999.000
+    N#3                0.048      0.000    999.000    999.000
+    N#4               -0.849      0.000    999.000    999.000
+    N#5                3.021      0.000    999.000    999.000
+
+ Thresholds
+    MULTI$1           -0.099      0.093     -1.057      0.290
+
+ Variances
+    FEMALE             0.230      0.003     80.044      0.000
+
+Latent Class 6
+
+ Means
+    FEMALE             0.591      0.028     21.336      0.000
+
+ Means
+    N#1               -8.392      0.000    999.000    999.000
+    N#2               -6.947      0.000    999.000    999.000
+    N#3               -3.383      0.000    999.000    999.000
+    N#4               -3.497      0.000    999.000    999.000
+    N#5               -2.498      0.000    999.000    999.000
+
+ Thresholds
+    MULTI$1           -0.022      0.110     -0.198      0.843
+
+ Variances
+    FEMALE             0.230      0.003     80.044      0.000
+
+Categorical Latent Variables
+
+ Means
+    C#1               -0.566      0.083     -6.794      0.000
+    C#2               -0.496      0.082     -6.043      0.000
+    C#3                0.203      0.072      2.822      0.005
+    C#4                0.124      0.074      1.683      0.092
+    C#5                0.258      0.076      3.390      0.001
+
+New/Additional Parameters
+    DIFF12             1.062      0.201      5.296      0.000
+    DIFF13             0.552      0.191      2.891      0.004
+    DIFF23            -0.510      0.157     -3.237      0.001
+    DIFF14             0.945      0.194      4.868      0.000
+    DIFF24            -0.117      0.158     -0.738      0.460
+    DIFF34             0.393      0.139      2.819      0.005
+    DIFF15             1.580      0.182      8.662      0.000
+    DIFF16             1.503      0.192      7.844      0.000
+    DIFF25             0.518      0.155      3.330      0.001
+    DIFF26             0.441      0.167      2.645      0.008
+    DIFF35             1.027      0.142      7.254      0.000
+    DIFF36             0.951      0.150      6.322      0.000
+    DIFF45             0.634      0.138      4.601      0.000
+    DIFF46             0.558      0.151      3.695      0.000
+    DIFF56            -0.077      0.152     -0.503      0.615
+
+
+RESULTS IN PROBABILITY SCALE
+
+Latent Class 1
+
+ MULTI
+    Category 1         0.815      0.024     34.235      0.000
+    Category 2         0.185      0.024      7.784      0.000
+
+Latent Class 2
+
+ MULTI
+    Category 1         0.603      0.030     20.334      0.000
+    Category 2         0.397      0.030     13.373      0.000
+
+Latent Class 3
+
+ MULTI
+    Category 1         0.717      0.020     36.386      0.000
+    Category 2         0.283      0.020     14.374      0.000
+
+Latent Class 4
+
+ MULTI
+    Category 1         0.631      0.023     27.956      0.000
+    Category 2         0.369      0.023     16.362      0.000
+
+Latent Class 5
+
+ MULTI
+    Category 1         0.475      0.023     20.449      0.000
+    Category 2         0.525      0.023     22.567      0.000
+
+Latent Class 6
+
+ MULTI
+    Category 1         0.495      0.028     17.982      0.000
+    Category 2         0.505      0.028     18.378      0.000
+
+
+LATENT CLASS ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+Latent Class 1 Compared to Latent Class 2
+
+ MULTI
+    Category > 1       0.346      0.069      0.233      0.512
+
+Latent Class 1 Compared to Latent Class 3
+
+ MULTI
+    Category > 1       0.576      0.110      0.396      0.837
+
+Latent Class 1 Compared to Latent Class 4
+
+ MULTI
+    Category > 1       0.388      0.075      0.265      0.568
+
+Latent Class 1 Compared to Latent Class 5
+
+ MULTI
+    Category > 1       0.206      0.038      0.144      0.295
+
+Latent Class 1 Compared to Latent Class 6
+
+ MULTI
+    Category > 1       0.222      0.043      0.153      0.324
+
+Latent Class 2 Compared to Latent Class 3
+
+ MULTI
+    Category > 1       1.665      0.262      1.223      2.267
+
+Latent Class 2 Compared to Latent Class 4
+
+ MULTI
+    Category > 1       1.124      0.178      0.824      1.532
+
+Latent Class 2 Compared to Latent Class 5
+
+ MULTI
+    Category > 1       0.596      0.093      0.439      0.808
+
+Latent Class 2 Compared to Latent Class 6
+
+ MULTI
+    Category > 1       0.643      0.107      0.464      0.892
+
+Latent Class 3 Compared to Latent Class 4
+
+ MULTI
+    Category > 1       0.675      0.094      0.514      0.887
+
+Latent Class 3 Compared to Latent Class 5
+
+ MULTI
+    Category > 1       0.358      0.051      0.271      0.472
+
+Latent Class 3 Compared to Latent Class 6
+
+ MULTI
+    Category > 1       0.387      0.058      0.288      0.519
+
+Latent Class 4 Compared to Latent Class 5
+
+ MULTI
+    Category > 1       0.530      0.073      0.405      0.695
+
+Latent Class 4 Compared to Latent Class 6
+
+ MULTI
+    Category > 1       0.573      0.086      0.426      0.770
+
+Latent Class 5 Compared to Latent Class 6
+
+ MULTI
+    Category > 1       1.080      0.165      0.801      1.456
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.186E-14
+       (ratio of smallest to largest eigenvalue)
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR CLASS 1
+
+
+           Model Estimated Means
+              FEMALE
+              ________
+                0.326
+
+
+           Residuals for Means
+              FEMALE
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              FEMALE
+              ________
+ FEMALE         0.230
+
+
+           Residuals for Covariances
+              FEMALE
+              ________
+ FEMALE        -0.010
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR CLASS 2
+
+
+           Model Estimated Means
+              FEMALE
+              ________
+                0.549
+
+
+           Residuals for Means
+              FEMALE
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              FEMALE
+              ________
+ FEMALE         0.230
+
+
+           Residuals for Covariances
+              FEMALE
+              ________
+ FEMALE         0.018
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR CLASS 3
+
+
+           Model Estimated Means
+              FEMALE
+              ________
+                0.526
+
+
+           Residuals for Means
+              FEMALE
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              FEMALE
+              ________
+ FEMALE         0.230
+
+
+           Residuals for Covariances
+              FEMALE
+              ________
+ FEMALE         0.019
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR CLASS 4
+
+
+           Model Estimated Means
+              FEMALE
+              ________
+                0.327
+
+
+           Residuals for Means
+              FEMALE
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              FEMALE
+              ________
+ FEMALE         0.230
+
+
+           Residuals for Covariances
+              FEMALE
+              ________
+ FEMALE        -0.010
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR CLASS 5
+
+
+           Model Estimated Means
+              FEMALE
+              ________
+                0.705
+
+
+           Residuals for Means
+              FEMALE
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              FEMALE
+              ________
+ FEMALE         0.230
+
+
+           Residuals for Covariances
+              FEMALE
+              ________
+ FEMALE        -0.022
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR CLASS 6
+
+
+           Model Estimated Means
+              FEMALE
+              ________
+                0.591
+
+
+           Residuals for Means
+              FEMALE
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              FEMALE
+              ________
+ FEMALE         0.230
+
+
+           Residuals for Covariances
+              FEMALE
+              ________
+ FEMALE         0.012
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 1
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.848          0.848                  0.000               -0.013
+       Category 1        0.000          0.000                  0.000                0.002
+       Category 2        0.057          0.057                  0.000                0.030
+       Category 3        0.094          0.094                  0.000               -0.008
+       Category 4        0.001          0.001                  0.000               -0.004
+       Category 5        0.000          0.000                  0.000                0.016
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 2
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.000          0.000                  0.000                0.009
+       Category 1        0.967          0.967                  0.000               -0.009
+       Category 2        0.002          0.002                  0.000                0.000
+       Category 3        0.010          0.010                  0.000                0.012
+       Category 4        0.007          0.007                  0.000               -0.006
+       Category 5        0.014          0.014                  0.000                0.005
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 3
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.018          0.018                  0.000                0.042
+       Category 1        0.000          0.000                  0.000                0.000
+       Category 2        0.881          0.881                  0.000                0.002
+       Category 3        0.016          0.016                  0.000               -0.020
+       Category 4        0.060          0.060                  0.000               -0.036
+       Category 5        0.024          0.024                  0.000                0.032
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 4
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.025          0.025                  0.000               -0.001
+       Category 1        0.001          0.001                  0.000                0.010
+       Category 2        0.026          0.026                  0.000                0.023
+       Category 3        0.879          0.880                 -0.001               -0.077
+       Category 4        0.041          0.041                  0.000                0.007
+       Category 5        0.029          0.028                  0.001                0.120
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 5
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.000          0.000                  0.000                0.020
+       Category 1        0.001          0.001                  0.000                0.008
+       Category 2        0.046          0.046                  0.000                0.020
+       Category 3        0.019          0.019                  0.001                0.159
+       Category 4        0.891          0.892                 -0.001               -0.083
+       Category 5        0.043          0.043                  0.000               -0.001
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 6
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.000          0.000                  0.000                0.013
+       Category 1        0.001          0.001                  0.000                0.002
+       Category 2        0.030          0.030                  0.000                0.001
+       Category 3        0.027          0.026                  0.001                0.095
+       Category 4        0.072          0.072                  0.000               -0.014
+       Category 5        0.871          0.871                  0.000               -0.036
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 1
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MULTI
+       Category 1        0.815          0.815                  0.000                0.000
+       Category 2        0.185          0.185                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 2
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MULTI
+       Category 1        0.603          0.603                  0.000                0.000
+       Category 2        0.397          0.397                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 3
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MULTI
+       Category 1        0.717          0.717                  0.000                0.000
+       Category 2        0.283          0.283                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 4
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MULTI
+       Category 1        0.631          0.631                  0.000                0.000
+       Category 2        0.369          0.369                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 5
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MULTI
+       Category 1        0.475          0.475                  0.000                0.000
+       Category 2        0.525          0.525                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 6
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MULTI
+       Category 1        0.495          0.495                  0.000                0.000
+       Category 2        0.505          0.505                  0.000                0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS 1
+
+
+           NU
+              FEMALE
+              ________
+                    1
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE             2
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS 2
+
+
+           NU
+              FEMALE
+              ________
+                    3
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE             2
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS 3
+
+
+           NU
+              FEMALE
+              ________
+                    4
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE             2
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS 4
+
+
+           NU
+              FEMALE
+              ________
+                    5
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE             2
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS 5
+
+
+           NU
+              FEMALE
+              ________
+                    6
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE             2
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS 6
+
+
+           NU
+              FEMALE
+              ________
+                    7
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE             2
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS INDICATOR MODEL PART
+
+
+           TAU(U) FOR LATENT CLASS 1
+              MULTI$1
+              ________
+                    8
+
+
+           TAU(U) FOR LATENT CLASS 2
+              MULTI$1
+              ________
+                    9
+
+
+           TAU(U) FOR LATENT CLASS 3
+              MULTI$1
+              ________
+                   10
+
+
+           TAU(U) FOR LATENT CLASS 4
+              MULTI$1
+              ________
+                   11
+
+
+           TAU(U) FOR LATENT CLASS 5
+              MULTI$1
+              ________
+                   12
+
+
+           TAU(U) FOR LATENT CLASS 6
+              MULTI$1
+              ________
+                   13
+
+
+     PARAMETER SPECIFICATION FOR LATENT CLASS REGRESSION MODEL PART
+
+
+           ALPHA(C)
+              C#1           C#2           C#3           C#4           C#5
+              ________      ________      ________      ________      ________
+                   14            15            16            17            18
+
+
+           ALPHA(C)
+              C#6
+              ________
+                    0
+
+
+     PARAMETER SPECIFICATION FOR THE CENSORED/NOMINAL/COUNT MODEL PART
+
+
+           NU(P) FOR LATENT CLASS 1
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU(P) FOR LATENT CLASS 2
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU(P) FOR LATENT CLASS 3
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU(P) FOR LATENT CLASS 4
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU(P) FOR LATENT CLASS 5
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU(P) FOR LATENT CLASS 6
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+     PARAMETER SPECIFICATION FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              DIFF12        DIFF13        DIFF23        DIFF14        DIFF24
+              ________      ________      ________      ________      ________
+                   19            20            21            22            23
+
+
+           NEW/ADDITIONAL PARAMETERS
+              DIFF34        DIFF15        DIFF16        DIFF25        DIFF26
+              ________      ________      ________      ________      ________
+                   24            25            26            27            28
+
+
+           NEW/ADDITIONAL PARAMETERS
+              DIFF35        DIFF36        DIFF45        DIFF46        DIFF56
+              ________      ________      ________      ________      ________
+                   29            30            31            32            33
+
+
+     STARTING VALUES FOR LATENT CLASS 1
+
+
+           NU
+              FEMALE
+              ________
+               -0.478
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE         0.125
+
+
+     STARTING VALUES FOR LATENT CLASS 2
+
+
+           NU
+              FEMALE
+              ________
+                0.022
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE         0.125
+
+
+     STARTING VALUES FOR LATENT CLASS 3
+
+
+           NU
+              FEMALE
+              ________
+                0.521
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE         0.125
+
+
+     STARTING VALUES FOR LATENT CLASS 4
+
+
+           NU
+              FEMALE
+              ________
+                0.521
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE         0.125
+
+
+     STARTING VALUES FOR LATENT CLASS 5
+
+
+           NU
+              FEMALE
+              ________
+                1.021
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE         0.125
+
+
+     STARTING VALUES FOR LATENT CLASS 6
+
+
+           NU
+              FEMALE
+              ________
+                1.520
+
+
+           THETA
+              FEMALE
+              ________
+ FEMALE         0.125
+
+
+     STARTING VALUES FOR LATENT CLASS INDICATOR MODEL PART
+
+
+           TAU(U) FOR LATENT CLASS 1
+              MULTI$1
+              ________
+               -1.569
+
+
+           TAU(U) FOR LATENT CLASS 2
+              MULTI$1
+              ________
+               -0.569
+
+
+           TAU(U) FOR LATENT CLASS 3
+              MULTI$1
+              ________
+                0.431
+
+
+           TAU(U) FOR LATENT CLASS 4
+              MULTI$1
+              ________
+                0.431
+
+
+           TAU(U) FOR LATENT CLASS 5
+              MULTI$1
+              ________
+                1.431
+
+
+           TAU(U) FOR LATENT CLASS 6
+              MULTI$1
+              ________
+                2.431
+
+
+     STARTING VALUES FOR LATENT CLASS REGRESSION MODEL PART
+
+
+           ALPHA(C)
+              C#1           C#2           C#3           C#4           C#5
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA(C)
+              C#6
+              ________
+                0.000
+
+
+     STARTING VALUES FOR THE CENSORED/NOMINAL/COUNT MODEL PART
+
+
+           NU(P) FOR LATENT CLASS 1
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+                7.881        -3.045         5.173         5.679         1.278
+
+
+           NU(P) FOR LATENT CLASS 2
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+               -3.432         4.228        -1.990        -0.388        -0.652
+
+
+           NU(P) FOR LATENT CLASS 3
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+               -0.274        -6.506         3.603        -0.403         0.924
+
+
+           NU(P) FOR LATENT CLASS 4
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+               -0.122        -3.083        -0.078         3.454         0.381
+
+
+           NU(P) FOR LATENT CLASS 5
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+               -5.754        -4.304         0.048        -0.849         3.021
+
+
+           NU(P) FOR LATENT CLASS 6
+              N#1           N#2           N#3           N#4           N#5
+              ________      ________      ________      ________      ________
+               -8.392        -6.947        -3.383        -3.497        -2.498
+
+
+     STARTING VALUES FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              DIFF12        DIFF13        DIFF23        DIFF14        DIFF24
+              ________      ________      ________      ________      ________
+                0.500         0.500         0.500         0.500         0.500
+
+
+           NEW/ADDITIONAL PARAMETERS
+              DIFF34        DIFF15        DIFF16        DIFF25        DIFF26
+              ________      ________      ________      ________      ________
+                0.500         0.500         0.500         0.500         0.500
+
+
+           NEW/ADDITIONAL PARAMETERS
+              DIFF35        DIFF36        DIFF45        DIFF46        DIFF56
+              ________      ________      ________      ________      ________
+                0.500         0.500         0.500         0.500         0.500
+
+
+     Beginning Time:  21:51:49
+        Ending Time:  21:51:49
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

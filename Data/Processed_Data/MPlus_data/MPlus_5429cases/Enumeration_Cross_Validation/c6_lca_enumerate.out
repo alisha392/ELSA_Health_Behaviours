@@ -1,0 +1,2245 @@
+Mplus VERSION 8.5 (Mac)
+MUTHEN & MUTHEN
+09/18/2022   2:38 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  C6_LCA_enumerate
+  DATA:
+  FILE = "./c_lca_enumerate.dat";
+
+  VARIABLE:
+  NAMES = idauniq W4_Smoke W5_Smoke W6_Smoke W7_Smoke W8_Smoke W4_Drink W5_Drink
+       W6_Drink W7_Drink W8_Drink W4_PA W5_PA W6_PA W7_PA W8_PA W4_FV W5_FV W6_FV
+       W7_FV W8_FV Weights Female Age Pat_Int Pat_Hig Self_Int Self_Hig Edu_Upp
+       Edu_Ter Wealth_2 Wealth_3 Eye_4 Circul_4 Endocr_4 Muscul_4 Respir_4 Neopla_4
+       Nervou_4 Mental_4 Multi_4 CMulti_4 Luncan_4 Multi Eye Circul Endocr Muscul
+       Respir Neopla Nervou Mental CMulti Luncan;
+   MISSING=.;
+   CATEGORICAL = W4_Smoke,W5_Smoke,W6_Smoke,W7_Smoke,W8_Smoke,
+  W4_Drink,W5_Drink,W6_Drink,W7_Drink,W8_Drink,
+  W4_PA,W5_PA,W6_PA,W7_PA,W8_PA,W4_FV,W5_FV,W6_FV,
+  W7_FV,W8_FV;
+  USEVARIABLES = W4_Smoke,W5_Smoke,W6_Smoke,W7_Smoke,W8_Smoke,
+  W4_Drink,W5_Drink,W6_Drink,W7_Drink,W8_Drink,
+  W4_PA,W5_PA,W6_PA,W7_PA,W8_PA,W4_FV,W5_FV,W6_FV,
+  W7_FV,W8_FV,Weights;
+  USEOBSERVATIONS = Female NE -99 AND Age NE -99
+    AND  Pat_Int NE -99 AND
+  Pat_Hig NE -99 AND Self_Int NE -99 AND
+  Self_Hig NE -99 AND Edu_Upp NE -99 AND
+  Edu_Ter NE -99 AND
+  Wealth_2 NE -99 AND Wealth_3 NE -99;
+          WEIGHT        = Weights;
+  MISSING ARE ALL (-99);
+          classes = c(6);
+  ANALYSIS:
+  estimator = mlr;
+      type = mixture;
+      starts = 500 100;
+      STITERATIONS=20;
+  LRTSTARTS = 50 10 400 20;
+  OUTPUT:
+  TECH11 TECH14
+  PLOT:
+  type = plot3;
+      series is W4_Smoke(2) W5_Smoke(3) W6_Smoke(4) W7_Smoke(5)
+      W8_Smoke(6) W4_Drink(7) W5_Drink(8)
+      W6_Drink(9) W7_Drink(10)
+      W8_Drink(11) W4_PA(12) W5_PA(13)
+      W6_PA(14) W7_PA(15) W8_PA(16)
+      W4_FV(17) W5_FV(18) W6_FV(19)
+      W7_FV(20) W8_FV(21);
+
+
+
+*** WARNING
+  One or more observations has a value of 0 for the WEIGHT variable.
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with weights.
+  Request for TECH14 is ignored.
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+C6_LCA_enumerate
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1886
+
+Number of dependent variables                                   20
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   W4_SMOKE    W5_SMOKE    W6_SMOKE    W7_SMOKE    W8_SMOKE    W4_DRINK
+   W5_DRINK    W6_DRINK    W7_DRINK    W8_DRINK    W4_PA       W5_PA
+   W6_PA       W7_PA       W8_PA       W4_FV       W5_FV       W6_FV
+   W7_FV       W8_FV
+
+Categorical latent variables
+   C
+
+Variables with special functions
+
+  Weight variable       WEIGHTS
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                        500
+  Number of final stage optimizations                          100
+  Number of initial stage iterations                            20
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Link                                                         LOGIT
+
+Input data file(s)
+  ./c_lca_enumerate.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns           525
+     Number of y missing data patterns           0
+     Number of u missing data patterns         525
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              W4_SMOKE      W5_SMOKE      W6_SMOKE      W7_SMOKE      W8_SMOKE
+              ________      ________      ________      ________      ________
+ W4_SMOKE       0.960
+ W5_SMOKE       0.577         0.582
+ W6_SMOKE       0.598         0.582         0.606
+ W7_SMOKE       0.610         0.582         0.604         0.618
+ W8_SMOKE       0.617         0.581         0.602         0.616         0.627
+ W4_DRINK       0.771         0.476         0.492         0.499         0.507
+ W5_DRINK       0.796         0.490         0.504         0.512         0.520
+ W6_DRINK       0.769         0.473         0.484         0.495         0.502
+ W7_DRINK       0.753         0.466         0.478         0.487         0.494
+ W8_DRINK       0.747         0.466         0.476         0.484         0.489
+ W4_PA          0.864         0.527         0.547         0.559         0.566
+ W5_PA          0.864         0.524         0.548         0.558         0.566
+ W6_PA          0.874         0.532         0.552         0.563         0.572
+ W7_PA          0.871         0.525         0.546         0.557         0.565
+ W8_PA          0.856         0.516         0.535         0.546         0.555
+ W4_FV          0.861         0.523         0.541         0.551         0.559
+ W5_FV          0.896         0.543         0.561         0.571         0.578
+ W6_FV          0.875         0.527         0.541         0.554         0.563
+ W7_FV          0.863         0.523         0.538         0.549         0.557
+ W8_FV          0.869         0.528         0.543         0.553         0.558
+
+
+           Covariance Coverage
+              W4_DRINK      W5_DRINK      W6_DRINK      W7_DRINK      W8_DRINK
+              ________      ________      ________      ________      ________
+ W4_DRINK       0.803
+ W5_DRINK       0.737         0.831
+ W6_DRINK       0.709         0.744         0.800
+ W7_DRINK       0.698         0.731         0.721         0.786
+ W8_DRINK       0.689         0.718         0.707         0.705         0.778
+ W4_PA          0.723         0.748         0.725         0.716         0.704
+ W5_PA          0.731         0.752         0.730         0.715         0.705
+ W6_PA          0.742         0.761         0.739         0.729         0.717
+ W7_PA          0.738         0.765         0.741         0.726         0.718
+ W8_PA          0.723         0.748         0.728         0.716         0.710
+ W4_FV          0.802         0.764         0.732         0.722         0.714
+ W5_FV          0.769         0.829         0.766         0.753         0.740
+ W6_FV          0.747         0.777         0.799         0.745         0.734
+ W7_FV          0.739         0.768         0.747         0.783         0.725
+ W8_FV          0.745         0.770         0.749         0.739         0.775
+
+
+           Covariance Coverage
+              W4_PA         W5_PA         W6_PA         W7_PA         W8_PA
+              ________      ________      ________      ________      ________
+ W4_PA          0.898
+ W5_PA          0.830         0.900
+ W6_PA          0.830         0.838         0.910
+ W7_PA          0.832         0.832         0.845         0.908
+ W8_PA          0.814         0.808         0.826         0.829         0.892
+ W4_FV          0.804         0.813         0.824         0.818         0.801
+ W5_FV          0.839         0.844         0.853         0.850         0.835
+ W6_FV          0.817         0.822         0.832         0.831         0.815
+ W7_FV          0.809         0.812         0.824         0.820         0.808
+ W8_FV          0.815         0.817         0.829         0.829         0.817
+
+
+           Covariance Coverage
+              W4_FV         W5_FV         W6_FV         W7_FV         W8_FV
+              ________      ________      ________      ________      ________
+ W4_FV          0.896
+ W5_FV          0.857         0.934
+ W6_FV          0.831         0.869         0.910
+ W7_FV          0.823         0.859         0.848         0.898
+ W8_FV          0.830         0.862         0.850         0.843         0.906
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    W4_SMOKE
+      Category 1    0.876         1581.911
+      Category 2    0.124          222.956
+    W5_SMOKE
+      Category 1    0.820          911.407
+      Category 2    0.180          200.705
+    W6_SMOKE
+      Category 1    0.852          988.946
+      Category 2    0.148          171.734
+    W7_SMOKE
+      Category 1    0.865         1022.106
+      Category 2    0.135          158.938
+    W8_SMOKE
+      Category 1    0.870         1042.638
+      Category 2    0.130          155.227
+    W4_DRINK
+      Category 1    0.215          314.384
+      Category 2    0.456          668.237
+      Category 3    0.281          411.598
+      Category 4    0.048           69.893
+    W5_DRINK
+      Category 1    0.240          365.561
+      Category 2    0.442          672.750
+      Category 3    0.276          419.824
+      Category 4    0.042           64.344
+    W6_DRINK
+      Category 1    0.241          351.984
+      Category 2    0.450          657.452
+      Category 3    0.261          380.779
+      Category 4    0.049           70.911
+    W7_DRINK
+      Category 1    0.230          327.233
+      Category 2    0.472          671.314
+      Category 3    0.254          361.424
+      Category 4    0.043           61.503
+    W8_DRINK
+      Category 1    0.275          390.446
+      Category 2    0.431          610.855
+      Category 3    0.250          355.096
+      Category 4    0.043           61.358
+    W4_PA
+      Category 1    0.006            9.839
+      Category 2    0.560          936.914
+      Category 3    0.183          305.634
+      Category 4    0.251          419.559
+    W5_PA
+      Category 1    0.008           13.148
+      Category 2    0.575          968.292
+      Category 3    0.188          316.043
+      Category 4    0.229          386.417
+    W6_PA
+      Category 1    0.011           18.248
+      Category 2    0.576          976.555
+      Category 3    0.161          272.103
+      Category 4    0.253          428.227
+    W7_PA
+      Category 1    0.010           17.281
+      Category 2    0.623         1050.976
+      Category 3    0.150          252.942
+      Category 4    0.216          364.484
+    W8_PA
+      Category 1    0.007           11.271
+      Category 2    0.637         1060.105
+      Category 3    0.159          265.109
+      Category 4    0.197          328.648
+    W4_FV
+      Category 1    0.420          696.460
+      Category 2    0.580          959.966
+    W5_FV
+      Category 1    0.427          743.447
+      Category 2    0.573          997.446
+    W6_FV
+      Category 1    0.400          678.217
+      Category 2    0.600         1019.417
+    W7_FV
+      Category 1    0.393          652.119
+      Category 2    0.607         1008.180
+    W8_FV
+      Category 1    0.411          695.748
+      Category 2    0.589          998.525
+
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -20916.529  73576            213
+          -20916.529  836066           372
+          -20916.529  345726           461
+          -20916.529  36714            201
+          -20916.529  396795           323
+          -20916.529  30098            209
+          -20916.529  181293           212
+          -20916.529  782821           272
+          -20916.529  850840           232
+          -20916.529  476498           179
+          -20916.529  950604           172
+          -20916.615  918558           412
+          -20918.338  535804           111
+          -20918.338  281558           184
+          -20918.347  123985           248
+          -20920.206  97158            205
+          -20920.206  432148           30
+          -20932.102  568859           49
+          -20935.034  354208           196
+          -20956.832  50887            389
+          -20959.880  85734            411
+
+79 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+     IN THE OPTIMIZATION, ONE OR MORE LOGIT THRESHOLDS APPROACHED EXTREME VALUES
+     OF -15.000 AND 15.000 AND WERE FIXED TO STABILIZE MODEL ESTIMATION.  THESE
+     VALUES IMPLY PROBABILITIES OF 0 AND 1.  IN THE MODEL RESULTS SECTION, THESE
+     PARAMETERS HAVE 0 STANDARD ERRORS AND 999 IN THE Z-SCORE AND P-VALUE COLUMNS.
+
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE CHI-SQUARE TEST CANNOT BE COMPUTED BECAUSE THE FREQUENCY TABLE FOR THE
+     LATENT CLASS INDICATOR MODEL PART IS TOO LARGE.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      245
+
+Loglikelihood
+
+          H0 Value                      -20916.529
+          H0 Scaling Correction Factor      1.3326
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   42323.058
+          Bayesian (BIC)                 43680.900
+          Sample-Size Adjusted BIC       42902.536
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        346.87184          0.18392
+       2        324.34521          0.17198
+       3        309.46336          0.16408
+       4        418.75615          0.22203
+       5        190.74174          0.10114
+       6        295.82171          0.15685
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        346.87184          0.18392
+       2        324.34521          0.17198
+       3        309.46336          0.16408
+       4        418.75615          0.22203
+       5        190.74174          0.10114
+       6        295.82171          0.15685
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              356          0.18901
+       2              327          0.17333
+       3              304          0.16104
+       4              415          0.21979
+       5              186          0.09882
+       6              298          0.15801
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.839
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6
+
+    1   0.840    0.063    0.018    0.017    0.006    0.058
+    2   0.066    0.835    0.037    0.032    0.001    0.031
+    3   0.013    0.037    0.902    0.034    0.000    0.013
+    4   0.002    0.019    0.029    0.933    0.002    0.016
+    5   0.000    0.006    0.000    0.002    0.989    0.003
+    6   0.072    0.030    0.018    0.017    0.010    0.854
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6
+
+    1   0.863    0.062    0.011    0.002    0.000    0.062
+    2   0.069    0.841    0.035    0.024    0.004    0.027
+    3   0.020    0.039    0.885    0.038    0.000    0.018
+    4   0.014    0.025    0.025    0.923    0.001    0.012
+    5   0.011    0.002    0.001    0.005    0.967    0.015
+    6   0.069    0.034    0.013    0.022    0.002    0.860
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6
+
+    1      2.639    0.002   -1.690   -3.275   -6.624    0.000
+    2      0.922    3.426    0.248   -0.132   -2.009    0.000
+    3      0.146    0.784    3.917    0.774   -6.158    0.000
+    4      0.176    0.715    0.724    4.338   -2.852    0.000
+    5     -0.349   -2.017   -3.084   -1.037    4.170    0.000
+    6     -2.517   -3.235   -4.174   -3.673   -6.250    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Thresholds
+    W4_SMOKE$1         3.486      0.533      6.536      0.000
+    W5_SMOKE$1         3.200      0.699      4.578      0.000
+    W6_SMOKE$1         4.927      1.108      4.448      0.000
+    W7_SMOKE$1        15.000      0.000    999.000    999.000
+    W8_SMOKE$1         5.054      1.934      2.614      0.009
+    W4_DRINK$1         0.630      0.215      2.935      0.003
+    W4_DRINK$2         4.328      0.760      5.694      0.000
+    W4_DRINK$3        15.000      0.000    999.000    999.000
+    W5_DRINK$1         1.198      0.263      4.556      0.000
+    W5_DRINK$2        15.000      0.000    999.000    999.000
+    W5_DRINK$3        15.000      0.000    999.000    999.000
+    W6_DRINK$1         1.363      0.317      4.298      0.000
+    W6_DRINK$2        15.000      0.000    999.000    999.000
+    W6_DRINK$3        15.000      0.000    999.000    999.000
+    W7_DRINK$1         1.108      0.272      4.079      0.000
+    W7_DRINK$2        15.000      0.000    999.000    999.000
+    W7_DRINK$3        15.000      0.000    999.000    999.000
+    W8_DRINK$1         1.556      0.281      5.546      0.000
+    W8_DRINK$2         9.684    108.703      0.089      0.929
+    W8_DRINK$3        15.000      0.000    999.000    999.000
+    W4_PA$1           -4.996      0.715     -6.987      0.000
+    W4_PA$2            1.538      0.306      5.032      0.000
+    W4_PA$3            2.238      0.403      5.554      0.000
+    W5_PA$1          -15.000      0.000    999.000    999.000
+    W5_PA$2            1.383      0.288      4.807      0.000
+    W5_PA$3            2.318      0.383      6.052      0.000
+    W6_PA$1           -4.011      0.735     -5.458      0.000
+    W6_PA$2            1.532      0.326      4.696      0.000
+    W6_PA$3            2.492      0.458      5.441      0.000
+    W7_PA$1           -4.500      0.862     -5.223      0.000
+    W7_PA$2            2.135      0.408      5.233      0.000
+    W7_PA$3            3.975      0.680      5.844      0.000
+    W8_PA$1          -15.000      0.000    999.000    999.000
+    W8_PA$2            2.043      0.367      5.573      0.000
+    W8_PA$3            3.463      0.650      5.332      0.000
+    W4_FV$1           -0.341      0.264     -1.293      0.196
+    W5_FV$1           -0.687      0.313     -2.196      0.028
+    W6_FV$1           -0.721      0.323     -2.232      0.026
+    W7_FV$1           -0.566      0.332     -1.706      0.088
+    W8_FV$1           -0.701      0.336     -2.086      0.037
+
+Latent Class 2
+
+ Thresholds
+    W4_SMOKE$1         4.150      0.763      5.440      0.000
+    W5_SMOKE$1         3.753      0.802      4.681      0.000
+    W6_SMOKE$1         4.060      0.610      6.660      0.000
+    W7_SMOKE$1         4.778      0.766      6.235      0.000
+    W8_SMOKE$1         4.363      0.807      5.406      0.000
+    W4_DRINK$1        -2.176      0.448     -4.856      0.000
+    W4_DRINK$2         1.782      0.275      6.490      0.000
+    W4_DRINK$3         4.525      0.877      5.162      0.000
+    W5_DRINK$1        -2.301      0.461     -4.993      0.000
+    W5_DRINK$2         1.892      0.312      6.056      0.000
+    W5_DRINK$3        15.000      0.000    999.000    999.000
+    W6_DRINK$1        -2.361      0.396     -5.968      0.000
+    W6_DRINK$2         2.024      0.298      6.796      0.000
+    W6_DRINK$3         6.360      1.560      4.077      0.000
+    W7_DRINK$1        -2.358      0.380     -6.209      0.000
+    W7_DRINK$2         2.427      0.374      6.484      0.000
+    W7_DRINK$3        15.000      0.000    999.000    999.000
+    W8_DRINK$1        -1.433      0.271     -5.286      0.000
+    W8_DRINK$2         2.224      0.315      7.071      0.000
+    W8_DRINK$3        15.000      0.000    999.000    999.000
+    W4_PA$1          -15.000      0.000    999.000    999.000
+    W4_PA$2            0.526      0.256      2.059      0.040
+    W4_PA$3            1.707      0.278      6.135      0.000
+    W5_PA$1          -15.000      0.000    999.000    999.000
+    W5_PA$2            0.610      0.247      2.468      0.014
+    W5_PA$3            1.966      0.283      6.940      0.000
+    W6_PA$1          -15.000      0.000    999.000    999.000
+    W6_PA$2            0.920      0.298      3.090      0.002
+    W6_PA$3            3.046      0.555      5.487      0.000
+    W7_PA$1           -5.884      1.078     -5.459      0.000
+    W7_PA$2            0.952      0.268      3.554      0.000
+    W7_PA$3            2.320      0.370      6.274      0.000
+    W8_PA$1           -5.620      1.008     -5.577      0.000
+    W8_PA$2            1.107      0.298      3.719      0.000
+    W8_PA$3            3.025      0.571      5.295      0.000
+    W4_FV$1           -1.164      0.184     -6.317      0.000
+    W5_FV$1           -1.870      0.357     -5.244      0.000
+    W6_FV$1           -2.708      0.463     -5.851      0.000
+    W7_FV$1           -2.397      0.399     -6.006      0.000
+    W8_FV$1           -2.089      0.418     -4.997      0.000
+
+Latent Class 3
+
+ Thresholds
+    W4_SMOKE$1         5.273      0.990      5.324      0.000
+    W5_SMOKE$1        15.000      0.000    999.000    999.000
+    W6_SMOKE$1         4.826      1.014      4.759      0.000
+    W7_SMOKE$1        15.000      0.000    999.000    999.000
+    W8_SMOKE$1         3.782      0.605      6.255      0.000
+    W4_DRINK$1        -1.686      0.338     -4.995      0.000
+    W4_DRINK$2         1.471      0.443      3.319      0.001
+    W4_DRINK$3        15.000      0.000    999.000    999.000
+    W5_DRINK$1        -1.411      0.260     -5.417      0.000
+    W5_DRINK$2         1.447      0.429      3.375      0.001
+    W5_DRINK$3         6.248      1.022      6.112      0.000
+    W6_DRINK$1        -1.388      0.246     -5.647      0.000
+    W6_DRINK$2         1.637      0.388      4.214      0.000
+    W6_DRINK$3        15.000      0.000    999.000    999.000
+    W7_DRINK$1        -1.518      0.277     -5.483      0.000
+    W7_DRINK$2         1.688      0.448      3.766      0.000
+    W7_DRINK$3        15.000      0.000    999.000    999.000
+    W8_DRINK$1        -1.361      0.261     -5.221      0.000
+    W8_DRINK$2         1.553      0.415      3.745      0.000
+    W8_DRINK$3        15.000      0.000    999.000    999.000
+    W4_PA$1          -15.000      0.000    999.000    999.000
+    W4_PA$2           -1.942      0.247     -7.852      0.000
+    W4_PA$3           -0.783      0.220     -3.564      0.000
+    W5_PA$1          -15.000      0.000    999.000    999.000
+    W5_PA$2           -1.992      0.300     -6.645      0.000
+    W5_PA$3           -0.661      0.243     -2.721      0.007
+    W6_PA$1           -5.075      1.482     -3.424      0.001
+    W6_PA$2           -2.591      0.410     -6.319      0.000
+    W6_PA$3           -1.255      0.336     -3.736      0.000
+    W7_PA$1          -15.000      0.000    999.000    999.000
+    W7_PA$2           -1.881      0.267     -7.047      0.000
+    W7_PA$3           -0.711      0.242     -2.937      0.003
+    W8_PA$1          -15.000      0.000    999.000    999.000
+    W8_PA$2           -1.858      0.322     -5.779      0.000
+    W8_PA$3           -0.579      0.243     -2.386      0.017
+    W4_FV$1           -0.768      0.205     -3.741      0.000
+    W5_FV$1           -0.749      0.212     -3.540      0.000
+    W6_FV$1           -0.957      0.218     -4.383      0.000
+    W7_FV$1           -0.933      0.222     -4.195      0.000
+    W8_FV$1           -0.989      0.219     -4.526      0.000
+
+Latent Class 4
+
+ Thresholds
+    W4_SMOKE$1         3.366      0.353      9.525      0.000
+    W5_SMOKE$1         4.266      0.688      6.199      0.000
+    W6_SMOKE$1         6.324      1.006      6.289      0.000
+    W7_SMOKE$1        15.000      0.000    999.000    999.000
+    W8_SMOKE$1         5.885      1.029      5.718      0.000
+    W4_DRINK$1        -4.261      0.617     -6.910      0.000
+    W4_DRINK$2        -2.398      0.252     -9.527      0.000
+    W4_DRINK$3         1.635      0.170      9.610      0.000
+    W5_DRINK$1        -4.717      0.621     -7.591      0.000
+    W5_DRINK$2        -2.031      0.198    -10.262      0.000
+    W5_DRINK$3         1.812      0.170     10.650      0.000
+    W6_DRINK$1        -3.945      0.489     -8.073      0.000
+    W6_DRINK$2        -2.023      0.248     -8.159      0.000
+    W6_DRINK$3         1.759      0.170     10.373      0.000
+    W7_DRINK$1        -4.423      0.652     -6.780      0.000
+    W7_DRINK$2        -2.001      0.237     -8.439      0.000
+    W7_DRINK$3         1.725      0.173      9.969      0.000
+    W8_DRINK$1        -4.675      0.882     -5.302      0.000
+    W8_DRINK$2        -1.647      0.221     -7.454      0.000
+    W8_DRINK$3         1.928      0.184     10.494      0.000
+    W4_PA$1           -5.959      1.005     -5.929      0.000
+    W4_PA$2           -0.082      0.163     -0.503      0.615
+    W4_PA$3            0.934      0.201      4.651      0.000
+    W5_PA$1           -4.780      0.942     -5.072      0.000
+    W5_PA$2            0.039      0.159      0.244      0.807
+    W5_PA$3            1.046      0.195      5.369      0.000
+    W6_PA$1           -4.835      0.739     -6.542      0.000
+    W6_PA$2           -0.061      0.177     -0.345      0.730
+    W6_PA$3            0.770      0.209      3.686      0.000
+    W7_PA$1           -5.148      0.718     -7.172      0.000
+    W7_PA$2            0.226      0.167      1.350      0.177
+    W7_PA$3            1.150      0.210      5.467      0.000
+    W8_PA$1           -4.896      0.733     -6.679      0.000
+    W8_PA$2            0.256      0.172      1.488      0.137
+    W8_PA$3            1.212      0.211      5.752      0.000
+    W4_FV$1           -0.284      0.131     -2.161      0.031
+    W5_FV$1           -0.332      0.140     -2.377      0.017
+    W6_FV$1           -0.376      0.143     -2.629      0.009
+    W7_FV$1           -0.475      0.135     -3.532      0.000
+    W8_FV$1           -0.263      0.141     -1.872      0.061
+
+Latent Class 5
+
+ Thresholds
+    W4_SMOKE$1        -4.846      1.014     -4.778      0.000
+    W5_SMOKE$1        -3.257      0.447     -7.286      0.000
+    W6_SMOKE$1        -2.013      0.420     -4.794      0.000
+    W7_SMOKE$1        -1.674      0.355     -4.721      0.000
+    W8_SMOKE$1        -1.304      0.273     -4.770      0.000
+    W4_DRINK$1        -0.686      0.222     -3.089      0.002
+    W4_DRINK$2         0.838      0.235      3.567      0.000
+    W4_DRINK$3         2.592      0.418      6.200      0.000
+    W5_DRINK$1        -0.753      0.221     -3.404      0.001
+    W5_DRINK$2         0.909      0.229      3.970      0.000
+    W5_DRINK$3         2.404      0.339      7.088      0.000
+    W6_DRINK$1        -0.562      0.219     -2.566      0.010
+    W6_DRINK$2         0.742      0.223      3.325      0.001
+    W6_DRINK$3         2.039      0.314      6.501      0.000
+    W7_DRINK$1        -0.487      0.212     -2.297      0.022
+    W7_DRINK$2         1.034      0.234      4.428      0.000
+    W7_DRINK$3         2.724      0.381      7.145      0.000
+    W8_DRINK$1        -0.239      0.205     -1.167      0.243
+    W8_DRINK$2         0.952      0.222      4.297      0.000
+    W8_DRINK$3         2.122      0.327      6.482      0.000
+    W4_PA$1           -4.044      0.716     -5.646      0.000
+    W4_PA$2            0.888      0.207      4.281      0.000
+    W4_PA$3            1.779      0.282      6.304      0.000
+    W5_PA$1           -4.030      0.605     -6.665      0.000
+    W5_PA$2            0.945      0.202      4.668      0.000
+    W5_PA$3            2.021      0.278      7.280      0.000
+    W6_PA$1           -3.502      0.529     -6.626      0.000
+    W6_PA$2            0.883      0.209      4.233      0.000
+    W6_PA$3            1.695      0.258      6.564      0.000
+    W7_PA$1           -3.143      0.505     -6.230      0.000
+    W7_PA$2            0.943      0.216      4.368      0.000
+    W7_PA$3            1.632      0.266      6.144      0.000
+    W8_PA$1           -3.820      0.523     -7.307      0.000
+    W8_PA$2            1.283      0.221      5.793      0.000
+    W8_PA$3            1.706      0.259      6.577      0.000
+    W4_FV$1            0.389      0.196      1.984      0.047
+    W5_FV$1            0.562      0.194      2.890      0.004
+    W6_FV$1            0.521      0.193      2.703      0.007
+    W7_FV$1            0.172      0.186      0.923      0.356
+    W8_FV$1            0.195      0.186      1.045      0.296
+
+Latent Class 6
+
+ Thresholds
+    W4_SMOKE$1         3.494      1.069      3.268      0.001
+    W5_SMOKE$1         3.168      1.266      2.503      0.012
+    W6_SMOKE$1         5.377      1.010      5.321      0.000
+    W7_SMOKE$1        15.000      0.000    999.000    999.000
+    W8_SMOKE$1        15.000      0.000    999.000    999.000
+    W4_DRINK$1        -1.509      0.393     -3.836      0.000
+    W4_DRINK$2         1.934      0.402      4.808      0.000
+    W4_DRINK$3        15.000      0.000    999.000    999.000
+    W5_DRINK$1        -1.295      0.482     -2.685      0.007
+    W5_DRINK$2         1.917      0.460      4.167      0.000
+    W5_DRINK$3        15.000      0.000    999.000    999.000
+    W6_DRINK$1        -1.654      0.486     -3.400      0.001
+    W6_DRINK$2         2.399      0.538      4.456      0.000
+    W6_DRINK$3         4.661      1.066      4.371      0.000
+    W7_DRINK$1        -1.255      0.467     -2.684      0.007
+    W7_DRINK$2         2.536      0.475      5.343      0.000
+    W7_DRINK$3        15.000      0.000    999.000    999.000
+    W8_DRINK$1        -1.041      0.406     -2.562      0.010
+    W8_DRINK$2         2.642      0.473      5.588      0.000
+    W8_DRINK$3         4.732      1.074      4.407      0.000
+    W4_PA$1           -4.121      0.621     -6.633      0.000
+    W4_PA$2            0.972      0.266      3.658      0.000
+    W4_PA$3            2.465      0.485      5.080      0.000
+    W5_PA$1           -3.578      0.585     -6.113      0.000
+    W5_PA$2            1.312      0.282      4.661      0.000
+    W5_PA$3            2.672      0.466      5.738      0.000
+    W6_PA$1           -4.332      1.107     -3.914      0.000
+    W6_PA$2            1.610      0.332      4.844      0.000
+    W6_PA$3            2.755      0.508      5.418      0.000
+    W7_PA$1           -4.056      0.866     -4.680      0.000
+    W7_PA$2            1.974      0.422      4.681      0.000
+    W7_PA$3            2.778      0.523      5.309      0.000
+    W8_PA$1           -4.171      0.544     -7.662      0.000
+    W8_PA$2            1.688      0.306      5.521      0.000
+    W8_PA$3            3.182      0.511      6.223      0.000
+    W4_FV$1            0.492      0.249      1.975      0.048
+    W5_FV$1            1.896      0.306      6.191      0.000
+    W6_FV$1            1.675      0.348      4.819      0.000
+    W7_FV$1            1.536      0.325      4.725      0.000
+    W8_FV$1            1.902      0.321      5.928      0.000
+
+Categorical Latent Variables
+
+ Means
+    C#1                0.159      0.170      0.938      0.348
+    C#2                0.092      0.150      0.613      0.540
+    C#3                0.045      0.167      0.271      0.787
+    C#4                0.348      0.139      2.503      0.012
+    C#5               -0.439      0.152     -2.894      0.004
+
+
+RESULTS IN PROBABILITY SCALE
+
+Latent Class 1
+
+ W4_SMOKE
+    Category 1         0.970      0.015     63.095      0.000
+    Category 2         0.030      0.015      1.932      0.053
+ W5_SMOKE
+    Category 1         0.961      0.026     36.530      0.000
+    Category 2         0.039      0.026      1.489      0.137
+ W6_SMOKE
+    Category 1         0.993      0.008    125.429      0.000
+    Category 2         0.007      0.008      0.909      0.363
+ W7_SMOKE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ W8_SMOKE
+    Category 1         0.994      0.012     81.523      0.000
+    Category 2         0.006      0.012      0.520      0.603
+ W4_DRINK
+    Category 1         0.652      0.049     13.407      0.000
+    Category 2         0.334      0.048      6.912      0.000
+    Category 3         0.013      0.010      1.333      0.183
+    Category 4         0.000      0.000      0.000      1.000
+ W5_DRINK
+    Category 1         0.768      0.047     16.403      0.000
+    Category 2         0.232      0.047      4.951      0.000
+    Category 3         0.000      0.000      0.000      1.000
+    Category 4         0.000      0.000      0.000      1.000
+ W6_DRINK
+    Category 1         0.796      0.051     15.476      0.000
+    Category 2         0.204      0.051      3.959      0.000
+    Category 3         0.000      0.000      0.000      1.000
+    Category 4         0.000      0.000      0.000      1.000
+ W7_DRINK
+    Category 1         0.752      0.051     14.829      0.000
+    Category 2         0.248      0.051      4.895      0.000
+    Category 3         0.000      0.000      0.000      1.000
+    Category 4         0.000      0.000      0.000      1.000
+ W8_DRINK
+    Category 1         0.826      0.040     20.456      0.000
+    Category 2         0.174      0.039      4.483      0.000
+    Category 3         0.000      0.007      0.009      0.993
+    Category 4         0.000      0.000      0.000      1.000
+ W4_PA
+    Category 1         0.007      0.005      1.408      0.159
+    Category 2         0.816      0.045     18.339      0.000
+    Category 3         0.080      0.023      3.567      0.000
+    Category 4         0.096      0.035      2.747      0.006
+ W5_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.800      0.046     17.333      0.000
+    Category 3         0.111      0.030      3.709      0.000
+    Category 4         0.090      0.031      2.868      0.004
+ W6_PA
+    Category 1         0.018      0.013      1.385      0.166
+    Category 2         0.805      0.048     16.708      0.000
+    Category 3         0.101      0.026      3.954      0.000
+    Category 4         0.076      0.032      2.364      0.018
+ W7_PA
+    Category 1         0.011      0.009      1.174      0.241
+    Category 2         0.883      0.037     24.009      0.000
+    Category 3         0.087      0.032      2.738      0.006
+    Category 4         0.018      0.012      1.498      0.134
+ W8_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.885      0.037     23.772      0.000
+    Category 3         0.084      0.026      3.264      0.001
+    Category 4         0.030      0.019      1.588      0.112
+ W4_FV
+    Category 1         0.415      0.064      6.477      0.000
+    Category 2         0.585      0.064      9.113      0.000
+ W5_FV
+    Category 1         0.335      0.070      4.807      0.000
+    Category 2         0.665      0.070      9.553      0.000
+ W6_FV
+    Category 1         0.327      0.071      4.604      0.000
+    Category 2         0.673      0.071      9.465      0.000
+ W7_FV
+    Category 1         0.362      0.077      4.727      0.000
+    Category 2         0.638      0.077      8.325      0.000
+ W8_FV
+    Category 1         0.332      0.074      4.451      0.000
+    Category 2         0.668      0.074      8.974      0.000
+
+Latent Class 2
+
+ W4_SMOKE
+    Category 1         0.984      0.012     84.479      0.000
+    Category 2         0.016      0.012      1.331      0.183
+ W5_SMOKE
+    Category 1         0.977      0.018     54.435      0.000
+    Category 2         0.023      0.018      1.277      0.202
+ W6_SMOKE
+    Category 1         0.983      0.010     96.771      0.000
+    Category 2         0.017      0.010      1.668      0.095
+ W7_SMOKE
+    Category 1         0.992      0.006    156.475      0.000
+    Category 2         0.008      0.006      1.316      0.188
+ W8_SMOKE
+    Category 1         0.987      0.010     98.500      0.000
+    Category 2         0.013      0.010      1.255      0.210
+ W4_DRINK
+    Category 1         0.102      0.041      2.485      0.013
+    Category 2         0.754      0.047     16.094      0.000
+    Category 3         0.133      0.032      4.133      0.000
+    Category 4         0.011      0.009      1.153      0.249
+ W5_DRINK
+    Category 1         0.091      0.038      2.387      0.017
+    Category 2         0.778      0.042     18.741      0.000
+    Category 3         0.131      0.036      3.684      0.000
+    Category 4         0.000      0.000      0.000      1.000
+ W6_DRINK
+    Category 1         0.086      0.031      2.766      0.006
+    Category 2         0.797      0.034     23.352      0.000
+    Category 3         0.115      0.030      3.808      0.000
+    Category 4         0.002      0.003      0.642      0.521
+ W7_DRINK
+    Category 1         0.086      0.030      2.882      0.004
+    Category 2         0.832      0.036     23.262      0.000
+    Category 3         0.081      0.028      2.908      0.004
+    Category 4         0.000      0.000      0.000      1.000
+ W8_DRINK
+    Category 1         0.193      0.042      4.569      0.000
+    Category 2         0.710      0.046     15.286      0.000
+    Category 3         0.098      0.028      3.523      0.000
+    Category 4         0.000      0.000      0.000      1.000
+ W4_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.629      0.060     10.532      0.000
+    Category 3         0.218      0.039      5.581      0.000
+    Category 4         0.154      0.036      4.246      0.000
+ W5_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.648      0.056     11.489      0.000
+    Category 3         0.229      0.041      5.537      0.000
+    Category 4         0.123      0.031      4.024      0.000
+ W6_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.715      0.061     11.787      0.000
+    Category 3         0.239      0.047      5.082      0.000
+    Category 4         0.045      0.024      1.887      0.059
+ W7_PA
+    Category 1         0.003      0.003      0.930      0.352
+    Category 2         0.719      0.054     13.379      0.000
+    Category 3         0.189      0.037      5.077      0.000
+    Category 4         0.090      0.030      2.970      0.003
+ W8_PA
+    Category 1         0.004      0.004      0.996      0.319
+    Category 2         0.748      0.055     13.490      0.000
+    Category 3         0.202      0.041      4.977      0.000
+    Category 4         0.046      0.025      1.835      0.066
+ W4_FV
+    Category 1         0.238      0.033      7.120      0.000
+    Category 2         0.762      0.033     22.807      0.000
+ W5_FV
+    Category 1         0.134      0.041      3.237      0.001
+    Category 2         0.866      0.041     20.998      0.000
+ W6_FV
+    Category 1         0.063      0.027      2.305      0.021
+    Category 2         0.937      0.027     34.560      0.000
+ W7_FV
+    Category 1         0.083      0.031      2.734      0.006
+    Category 2         0.917      0.031     30.042      0.000
+ W8_FV
+    Category 1         0.110      0.041      2.687      0.007
+    Category 2         0.890      0.041     21.714      0.000
+
+Latent Class 3
+
+ W4_SMOKE
+    Category 1         0.995      0.005    197.858      0.000
+    Category 2         0.005      0.005      1.015      0.310
+ W5_SMOKE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ W6_SMOKE
+    Category 1         0.992      0.008    123.936      0.000
+    Category 2         0.008      0.008      0.994      0.320
+ W7_SMOKE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ W8_SMOKE
+    Category 1         0.978      0.013     74.280      0.000
+    Category 2         0.022      0.013      1.691      0.091
+ W4_DRINK
+    Category 1         0.156      0.045      3.511      0.000
+    Category 2         0.657      0.050     13.154      0.000
+    Category 3         0.187      0.067      2.775      0.006
+    Category 4         0.000      0.000      0.000      1.000
+ W5_DRINK
+    Category 1         0.196      0.041      4.775      0.000
+    Category 2         0.614      0.054     11.309      0.000
+    Category 3         0.188      0.066      2.860      0.004
+    Category 4         0.002      0.002      0.980      0.327
+ W6_DRINK
+    Category 1         0.200      0.039      5.082      0.000
+    Category 2         0.637      0.046     13.816      0.000
+    Category 3         0.163      0.053      3.075      0.002
+    Category 4         0.000      0.000      0.000      1.000
+ W7_DRINK
+    Category 1         0.180      0.041      4.402      0.000
+    Category 2         0.664      0.051     12.959      0.000
+    Category 3         0.156      0.059      2.643      0.008
+    Category 4         0.000      0.000      0.000      1.000
+ W8_DRINK
+    Category 1         0.204      0.042      4.819      0.000
+    Category 2         0.621      0.049     12.772      0.000
+    Category 3         0.175      0.060      2.923      0.003
+    Category 4         0.000      0.000      0.000      1.000
+ W4_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.125      0.027      4.624      0.000
+    Category 3         0.188      0.036      5.207      0.000
+    Category 4         0.686      0.047     14.507      0.000
+ W5_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.120      0.032      3.790      0.000
+    Category 3         0.221      0.039      5.586      0.000
+    Category 4         0.659      0.055     12.092      0.000
+ W6_PA
+    Category 1         0.006      0.009      0.679      0.497
+    Category 2         0.064      0.025      2.571      0.010
+    Category 3         0.152      0.042      3.601      0.000
+    Category 4         0.778      0.058     13.420      0.000
+ W7_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.132      0.031      4.317      0.000
+    Category 3         0.197      0.040      4.930      0.000
+    Category 4         0.671      0.053     12.543      0.000
+ W8_PA
+    Category 1         0.000      0.000      0.000      1.000
+    Category 2         0.135      0.038      3.595      0.000
+    Category 3         0.224      0.037      6.104      0.000
+    Category 4         0.641      0.056     11.473      0.000
+ W4_FV
+    Category 1         0.317      0.044      7.130      0.000
+    Category 2         0.683      0.044     15.371      0.000
+ W5_FV
+    Category 1         0.321      0.046      6.959      0.000
+    Category 2         0.679      0.046     14.719      0.000
+ W6_FV
+    Category 1         0.277      0.044      6.335      0.000
+    Category 2         0.723      0.044     16.503      0.000
+ W7_FV
+    Category 1         0.282      0.045      6.268      0.000
+    Category 2         0.718      0.045     15.929      0.000
+ W8_FV
+    Category 1         0.271      0.043      6.277      0.000
+    Category 2         0.729      0.043     16.878      0.000
+
+Latent Class 4
+
+ W4_SMOKE
+    Category 1         0.967      0.011     84.793      0.000
+    Category 2         0.033      0.011      2.927      0.003
+ W5_SMOKE
+    Category 1         0.986      0.009    104.990      0.000
+    Category 2         0.014      0.009      1.473      0.141
+ W6_SMOKE
+    Category 1         0.998      0.002    555.860      0.000
+    Category 2         0.002      0.002      0.996      0.319
+ W7_SMOKE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ W8_SMOKE
+    Category 1         0.997      0.003    350.455      0.000
+    Category 2         0.003      0.003      0.974      0.330
+ W4_DRINK
+    Category 1         0.014      0.008      1.645      0.100
+    Category 2         0.069      0.017      3.967      0.000
+    Category 3         0.754      0.026     28.495      0.000
+    Category 4         0.163      0.023      7.025      0.000
+ W5_DRINK
+    Category 1         0.009      0.005      1.624      0.104
+    Category 2         0.107      0.020      5.414      0.000
+    Category 3         0.744      0.025     29.437      0.000
+    Category 4         0.140      0.021      6.837      0.000
+ W6_DRINK
+    Category 1         0.019      0.009      2.086      0.037
+    Category 2         0.098      0.023      4.248      0.000
+    Category 3         0.736      0.027     27.308      0.000
+    Category 4         0.147      0.021      6.913      0.000
+ W7_DRINK
+    Category 1         0.012      0.008      1.551      0.121
+    Category 2         0.107      0.024      4.539      0.000
+    Category 3         0.730      0.028     25.967      0.000
+    Category 4         0.151      0.022      6.808      0.000
+ W8_DRINK
+    Category 1         0.009      0.008      1.145      0.252
+    Category 2         0.152      0.028      5.484      0.000
+    Category 3         0.711      0.031     23.309      0.000
+    Category 4         0.127      0.020      6.236      0.000
+ W4_PA
+    Category 1         0.003      0.003      0.998      0.318
+    Category 2         0.477      0.041     11.754      0.000
+    Category 3         0.238      0.026      9.252      0.000
+    Category 4         0.282      0.041      6.938      0.000
+ W5_PA
+    Category 1         0.008      0.008      1.070      0.285
+    Category 2         0.501      0.039     12.905      0.000
+    Category 3         0.230      0.025      9.049      0.000
+    Category 4         0.260      0.037      6.941      0.000
+ W6_PA
+    Category 1         0.008      0.006      1.364      0.173
+    Category 2         0.477      0.044     10.874      0.000
+    Category 3         0.199      0.023      8.472      0.000
+    Category 4         0.316      0.045      7.001      0.000
+ W7_PA
+    Category 1         0.006      0.004      1.401      0.161
+    Category 2         0.551      0.041     13.360      0.000
+    Category 3         0.203      0.024      8.556      0.000
+    Category 4         0.240      0.038      6.256      0.000
+ W8_PA
+    Category 1         0.007      0.005      1.374      0.169
+    Category 2         0.556      0.042     13.225      0.000
+    Category 3         0.207      0.025      8.172      0.000
+    Category 4         0.229      0.037      6.160      0.000
+ W4_FV
+    Category 1         0.430      0.032     13.358      0.000
+    Category 2         0.570      0.032     17.739      0.000
+ W5_FV
+    Category 1         0.418      0.034     12.285      0.000
+    Category 2         0.582      0.034     17.127      0.000
+ W6_FV
+    Category 1         0.407      0.035     11.789      0.000
+    Category 2         0.593      0.035     17.172      0.000
+ W7_FV
+    Category 1         0.383      0.032     12.050      0.000
+    Category 2         0.617      0.032     19.382      0.000
+ W8_FV
+    Category 1         0.435      0.035     12.569      0.000
+    Category 2         0.565      0.035     16.357      0.000
+
+Latent Class 5
+
+ W4_SMOKE
+    Category 1         0.008      0.008      0.994      0.320
+    Category 2         0.992      0.008    126.464      0.000
+ W5_SMOKE
+    Category 1         0.037      0.016      2.323      0.020
+    Category 2         0.963      0.016     60.318      0.000
+ W6_SMOKE
+    Category 1         0.118      0.044      2.699      0.007
+    Category 2         0.882      0.044     20.213      0.000
+ W7_SMOKE
+    Category 1         0.158      0.047      3.349      0.001
+    Category 2         0.842      0.047     17.863      0.000
+ W8_SMOKE
+    Category 1         0.213      0.046      4.650      0.000
+    Category 2         0.787      0.046     17.135      0.000
+ W4_DRINK
+    Category 1         0.335      0.049      6.775      0.000
+    Category 2         0.363      0.053      6.901      0.000
+    Category 3         0.232      0.045      5.211      0.000
+    Category 4         0.070      0.027      2.571      0.010
+ W5_DRINK
+    Category 1         0.320      0.048      6.654      0.000
+    Category 2         0.393      0.050      7.902      0.000
+    Category 3         0.204      0.041      4.943      0.000
+    Category 4         0.083      0.026      3.215      0.001
+ W6_DRINK
+    Category 1         0.363      0.051      7.174      0.000
+    Category 2         0.314      0.047      6.702      0.000
+    Category 3         0.207      0.042      4.996      0.000
+    Category 4         0.115      0.032      3.603      0.000
+ W7_DRINK
+    Category 1         0.381      0.050      7.619      0.000
+    Category 2         0.357      0.049      7.311      0.000
+    Category 3         0.201      0.042      4.808      0.000
+    Category 4         0.062      0.022      2.796      0.005
+ W8_DRINK
+    Category 1         0.441      0.050      8.730      0.000
+    Category 2         0.281      0.044      6.371      0.000
+    Category 3         0.171      0.038      4.480      0.000
+    Category 4         0.107      0.031      3.420      0.001
+ W4_PA
+    Category 1         0.017      0.012      1.421      0.155
+    Category 2         0.691      0.044     15.859      0.000
+    Category 3         0.147      0.032      4.558      0.000
+    Category 4         0.144      0.035      4.141      0.000
+ W5_PA
+    Category 1         0.017      0.010      1.683      0.092
+    Category 2         0.703      0.041     16.942      0.000
+    Category 3         0.163      0.034      4.857      0.000
+    Category 4         0.117      0.029      4.081      0.000
+ W6_PA
+    Category 1         0.029      0.015      1.949      0.051
+    Category 2         0.678      0.044     15.351      0.000
+    Category 3         0.137      0.034      4.103      0.000
+    Category 4         0.155      0.034      4.582      0.000
+ W7_PA
+    Category 1         0.041      0.020      2.068      0.039
+    Category 2         0.678      0.046     14.738      0.000
+    Category 3         0.117      0.028      4.133      0.000
+    Category 4         0.164      0.036      4.503      0.000
+ W8_PA
+    Category 1         0.021      0.011      1.955      0.051
+    Category 2         0.761      0.039     19.692      0.000
+    Category 3         0.063      0.021      2.969      0.003
+    Category 4         0.154      0.034      4.556      0.000
+ W4_FV
+    Category 1         0.596      0.047     12.632      0.000
+    Category 2         0.404      0.047      8.562      0.000
+ W5_FV
+    Category 1         0.637      0.045     14.167      0.000
+    Category 2         0.363      0.045      8.078      0.000
+ W6_FV
+    Category 1         0.627      0.045     13.928      0.000
+    Category 2         0.373      0.045      8.274      0.000
+ W7_FV
+    Category 1         0.543      0.046     11.738      0.000
+    Category 2         0.457      0.046      9.884      0.000
+ W8_FV
+    Category 1         0.549      0.046     11.894      0.000
+    Category 2         0.451      0.046      9.790      0.000
+
+Latent Class 6
+
+ W4_SMOKE
+    Category 1         0.971      0.031     31.735      0.000
+    Category 2         0.029      0.031      0.964      0.335
+ W5_SMOKE
+    Category 1         0.960      0.049     19.570      0.000
+    Category 2         0.040      0.049      0.823      0.410
+ W6_SMOKE
+    Category 1         0.995      0.005    215.147      0.000
+    Category 2         0.005      0.005      0.994      0.320
+ W7_SMOKE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ W8_SMOKE
+    Category 1         1.000      0.000      0.000      1.000
+    Category 2         0.000      0.000      0.000      1.000
+ W4_DRINK
+    Category 1         0.181      0.058      3.105      0.002
+    Category 2         0.693      0.050     13.713      0.000
+    Category 3         0.126      0.044      2.846      0.004
+    Category 4         0.000      0.000      0.000      1.000
+ W5_DRINK
+    Category 1         0.215      0.081      2.641      0.008
+    Category 2         0.657      0.059     11.158      0.000
+    Category 3         0.128      0.051      2.493      0.013
+    Category 4         0.000      0.000      0.000      1.000
+ W6_DRINK
+    Category 1         0.161      0.066      2.449      0.014
+    Category 2         0.756      0.053     14.256      0.000
+    Category 3         0.074      0.039      1.892      0.058
+    Category 4         0.009      0.010      0.947      0.344
+ W7_DRINK
+    Category 1         0.222      0.081      2.750      0.006
+    Category 2         0.705      0.071      9.894      0.000
+    Category 3         0.073      0.032      2.273      0.023
+    Category 4         0.000      0.000      0.000      1.000
+ W8_DRINK
+    Category 1         0.261      0.078      3.331      0.001
+    Category 2         0.673      0.073      9.184      0.000
+    Category 3         0.058      0.028      2.092      0.036
+    Category 4         0.009      0.009      0.940      0.347
+ W4_PA
+    Category 1         0.016      0.010      1.636      0.102
+    Category 2         0.710      0.053     13.339      0.000
+    Category 3         0.196      0.037      5.243      0.000
+    Category 4         0.078      0.035      2.236      0.025
+ W5_PA
+    Category 1         0.027      0.015      1.757      0.079
+    Category 2         0.761      0.048     15.953      0.000
+    Category 3         0.147      0.037      3.962      0.000
+    Category 4         0.065      0.028      2.296      0.022
+ W6_PA
+    Category 1         0.013      0.014      0.915      0.360
+    Category 2         0.820      0.050     16.457      0.000
+    Category 3         0.107      0.031      3.445      0.001
+    Category 4         0.060      0.029      2.092      0.036
+ W7_PA
+    Category 1         0.017      0.015      1.174      0.240
+    Category 2         0.861      0.044     19.509      0.000
+    Category 3         0.063      0.026      2.452      0.014
+    Category 4         0.059      0.029      2.030      0.042
+ W8_PA
+    Category 1         0.015      0.008      1.865      0.062
+    Category 2         0.829      0.041     20.365      0.000
+    Category 3         0.116      0.031      3.789      0.000
+    Category 4         0.040      0.020      2.037      0.042
+ W4_FV
+    Category 1         0.621      0.059     10.575      0.000
+    Category 2         0.379      0.059      6.464      0.000
+ W5_FV
+    Category 1         0.869      0.035     25.010      0.000
+    Category 2         0.131      0.035      3.755      0.000
+ W6_FV
+    Category 1         0.842      0.046     18.237      0.000
+    Category 2         0.158      0.046      3.414      0.001
+ W7_FV
+    Category 1         0.823      0.047     17.369      0.000
+    Category 2         0.177      0.047      3.739      0.000
+ W8_FV
+    Category 1         0.870      0.036     23.997      0.000
+    Category 2         0.130      0.036      3.582      0.000
+
+
+LATENT CLASS ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+Latent Class 1 Compared to Latent Class 2
+
+ W4_SMOKE
+    Category > 1       1.943      1.868      0.295     12.784
+ W5_SMOKE
+    Category > 1       1.738      1.923      0.199     15.198
+ W6_SMOKE
+    Category > 1       0.421      0.547      0.033      5.391
+ W7_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W8_SMOKE
+    Category > 1       0.501      1.147      0.006     44.508
+ W4_DRINK
+    Category > 1       0.060      0.031      0.022      0.166
+    Category > 2       0.078      0.064      0.016      0.393
+    Category > 3       0.000      0.000      0.000      0.000
+ W5_DRINK
+    Category > 1       0.030      0.014      0.012      0.077
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       1.000      0.000      1.000      1.000
+ W6_DRINK
+    Category > 1       0.024      0.012      0.009      0.064
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       0.031      0.012      0.015      0.067
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       1.000      0.000      1.000      1.000
+ W8_DRINK
+    Category > 1       0.050      0.017      0.026      0.098
+    Category > 2       0.001      0.063      0.000  *********
+    Category > 3       1.000      0.000      1.000      1.000
+ W4_PA
+    Category > 1       0.000      0.000      0.000      0.000
+    Category > 2       0.364      0.142      0.169      0.784
+    Category > 3       0.588      0.284      0.229      1.514
+ W5_PA
+    Category > 1       1.000      0.000      1.000      1.000
+    Category > 2       0.462      0.179      0.216      0.987
+    Category > 3       0.703      0.337      0.275      1.798
+ W6_PA
+    Category > 1       0.000      0.000      0.000      0.000
+    Category > 2       0.542      0.239      0.229      1.288
+    Category > 3       1.740      1.215      0.442      6.840
+ W7_PA
+    Category > 1       0.251      0.347      0.017      3.785
+    Category > 2       0.306      0.152      0.116      0.809
+    Category > 3       0.191      0.143      0.044      0.831
+ W8_PA
+    Category > 1   11847.197      0.000  11847.197  11847.197
+    Category > 2       0.392      0.191      0.151      1.017
+    Category > 3       0.645      0.537      0.126      3.301
+ W4_FV
+    Category > 1       0.439      0.150      0.225      0.856
+ W5_FV
+    Category > 1       0.306      0.172      0.102      0.921
+ W6_FV
+    Category > 1       0.137      0.089      0.038      0.490
+ W7_FV
+    Category > 1       0.160      0.096      0.050      0.518
+ W8_FV
+    Category > 1       0.250      0.164      0.069      0.907
+
+Latent Class 1 Compared to Latent Class 3
+
+ W4_SMOKE
+    Category > 1       5.970      6.747      0.652     54.704
+ W5_SMOKE
+    Category > 1   *********      0.000  *********  *********
+ W6_SMOKE
+    Category > 1       0.904      1.357      0.048     17.135
+ W7_SMOKE
+    Category > 1       1.000      0.000      1.000      1.000
+ W8_SMOKE
+    Category > 1       0.280      0.572      0.005     15.297
+ W4_DRINK
+    Category > 1       0.099      0.043      0.042      0.231
+    Category > 2       0.057      0.050      0.011      0.314
+    Category > 3       1.000      0.000      1.000      1.000
+ W5_DRINK
+    Category > 1       0.074      0.029      0.034      0.158
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W6_DRINK
+    Category > 1       0.064      0.027      0.028      0.145
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       1.000      0.000      1.000      1.000
+ W7_DRINK
+    Category > 1       0.072      0.028      0.034      0.156
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       1.000      0.000      1.000      1.000
+ W8_DRINK
+    Category > 1       0.054      0.021      0.025      0.117
+    Category > 2       0.000      0.032      0.000  *********
+    Category > 3       1.000      0.000      1.000      1.000
+ W4_PA
+    Category > 1       0.000      0.000      0.000      0.000
+    Category > 2       0.031      0.011      0.015      0.062
+    Category > 3       0.049      0.021      0.021      0.112
+ W5_PA
+    Category > 1       1.000      0.000      1.000      1.000
+    Category > 2       0.034      0.013      0.016      0.072
+    Category > 3       0.051      0.022      0.022      0.117
+ W6_PA
+    Category > 1       0.345      0.584      0.013      9.510
+    Category > 2       0.016      0.008      0.006      0.042
+    Category > 3       0.024      0.012      0.009      0.063
+ W7_PA
+    Category > 1       0.000      0.000      0.000      0.000
+    Category > 2       0.018      0.008      0.008      0.042
+    Category > 3       0.009      0.006      0.002      0.034
+ W8_PA
+    Category > 1       1.000      0.000      1.000      1.000
+    Category > 2       0.020      0.009      0.008      0.049
+    Category > 3       0.018      0.011      0.005      0.062
+ W4_FV
+    Category > 1       0.653      0.220      0.337      1.263
+ W5_FV
+    Category > 1       0.940      0.360      0.443      1.992
+ W6_FV
+    Category > 1       0.789      0.323      0.354      1.761
+ W7_FV
+    Category > 1       0.693      0.288      0.307      1.563
+ W8_FV
+    Category > 1       0.750      0.297      0.345      1.630
+
+Latent Class 1 Compared to Latent Class 4
+
+ W4_SMOKE
+    Category > 1       0.887      0.566      0.254      3.099
+ W5_SMOKE
+    Category > 1       2.904      2.868      0.419     20.115
+ W6_SMOKE
+    Category > 1       4.045      6.050      0.216     75.846
+ W7_SMOKE
+    Category > 1       1.000      0.000      1.000      1.000
+ W8_SMOKE
+    Category > 1       2.296      5.344      0.024    219.825
+ W4_DRINK
+    Category > 1       0.008      0.005      0.002      0.026
+    Category > 2       0.001      0.001      0.000      0.006
+    Category > 3       0.000      0.000      0.000      0.000
+ W5_DRINK
+    Category > 1       0.003      0.002      0.001      0.010
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W6_DRINK
+    Category > 1       0.005      0.003      0.002      0.015
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       0.004      0.003      0.001      0.016
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W8_DRINK
+    Category > 1       0.002      0.002      0.000      0.012
+    Category > 2       0.000      0.001      0.000  *********
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1       0.382      0.472      0.034      4.294
+    Category > 2       0.198      0.074      0.096      0.410
+    Category > 3       0.272      0.132      0.104      0.706
+ W5_PA
+    Category > 1   27457.773      0.000  27457.773  27457.773
+    Category > 2       0.261      0.091      0.132      0.515
+    Category > 3       0.280      0.127      0.115      0.681
+ W6_PA
+    Category > 1       0.438      0.470      0.054      3.588
+    Category > 2       0.203      0.082      0.093      0.447
+    Category > 3       0.179      0.098      0.061      0.526
+ W7_PA
+    Category > 1       0.523      0.580      0.059      4.602
+    Category > 2       0.148      0.070      0.059      0.372
+    Category > 3       0.059      0.044      0.014      0.256
+ W8_PA
+    Category > 1   24444.285      0.000  24444.287  24444.287
+    Category > 2       0.167      0.073      0.072      0.392
+    Category > 3       0.105      0.077      0.025      0.442
+ W4_FV
+    Category > 1       1.059      0.323      0.583      1.927
+ W5_FV
+    Category > 1       1.426      0.519      0.698      2.909
+ W6_FV
+    Category > 1       1.411      0.536      0.671      2.970
+ W7_FV
+    Category > 1       1.095      0.407      0.528      2.271
+ W8_FV
+    Category > 1       1.549      0.599      0.726      3.306
+
+Latent Class 1 Compared to Latent Class 5
+
+ W4_SMOKE
+    Category > 1       0.000      0.000      0.000      0.002
+ W5_SMOKE
+    Category > 1       0.002      0.001      0.000      0.008
+ W6_SMOKE
+    Category > 1       0.001      0.001      0.000      0.010
+ W7_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W8_SMOKE
+    Category > 1       0.002      0.003      0.000      0.081
+ W4_DRINK
+    Category > 1       0.268      0.082      0.148      0.487
+    Category > 2       0.031      0.024      0.006      0.143
+    Category > 3       0.000      0.000      0.000      0.000
+ W5_DRINK
+    Category > 1       0.142      0.049      0.072      0.279
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W6_DRINK
+    Category > 1       0.146      0.057      0.068      0.314
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       0.203      0.071      0.102      0.402
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W8_DRINK
+    Category > 1       0.166      0.058      0.084      0.329
+    Category > 2       0.000      0.018      0.000  *********
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1       2.591      2.621      0.357     18.817
+    Category > 2       0.522      0.193      0.253      1.076
+    Category > 3       0.632      0.310      0.242      1.651
+ W5_PA
+    Category > 1   58101.840      0.000  58101.836  58101.836
+    Category > 2       0.645      0.229      0.321      1.294
+    Category > 3       0.743      0.355      0.291      1.894
+ W6_PA
+    Category > 1       1.663      1.526      0.275     10.053
+    Category > 2       0.523      0.204      0.244      1.121
+    Category > 3       0.451      0.237      0.161      1.261
+ W7_PA
+    Category > 1       3.884      3.910      0.540     27.936
+    Category > 2       0.304      0.138      0.124      0.740
+    Category > 3       0.096      0.070      0.023      0.397
+ W8_PA
+    Category > 1   71675.547      0.000  71675.547  71675.547
+    Category > 2       0.467      0.201      0.201      1.085
+    Category > 3       0.172      0.120      0.044      0.674
+ W4_FV
+    Category > 1       2.076      0.662      1.111      3.877
+ W5_FV
+    Category > 1       3.485      1.228      1.747      6.953
+ W6_FV
+    Category > 1       3.461      1.262      1.694      7.072
+ W7_FV
+    Category > 1       2.092      0.780      1.007      4.346
+ W8_FV
+    Category > 1       2.449      0.923      1.170      5.127
+
+Latent Class 1 Compared to Latent Class 6
+
+ W4_SMOKE
+    Category > 1       1.009      1.375      0.070     14.599
+ W5_SMOKE
+    Category > 1       0.969      1.652      0.034     27.402
+ W6_SMOKE
+    Category > 1       1.569      2.360      0.082     29.937
+ W7_SMOKE
+    Category > 1       1.000      0.000      1.000      1.000
+ W8_SMOKE
+    Category > 1   20868.922      0.000  20868.924  20868.924
+ W4_DRINK
+    Category > 1       0.118      0.049      0.052      0.266
+    Category > 2       0.091      0.083      0.015      0.545
+    Category > 3       1.000      0.000      1.000      1.000
+ W5_DRINK
+    Category > 1       0.083      0.046      0.028      0.248
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       1.000      0.000      1.000      1.000
+ W6_DRINK
+    Category > 1       0.049      0.028      0.016      0.152
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       0.094      0.054      0.030      0.292
+    Category > 2       0.000      0.000      0.000      0.000
+    Category > 3       1.000      0.000      1.000      1.000
+ W8_DRINK
+    Category > 1       0.075      0.038      0.027      0.204
+    Category > 2       0.001      0.095      0.000  *********
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1       2.400      2.343      0.354     16.266
+    Category > 2       0.568      0.262      0.231      1.401
+    Category > 3       1.256      0.855      0.331      4.767
+ W5_PA
+    Category > 1   91342.977      0.000  91342.969  91342.969
+    Category > 2       0.931      0.423      0.382      2.269
+    Category > 3       1.425      0.920      0.402      5.052
+ W6_PA
+    Category > 1       0.726      1.031      0.045     11.755
+    Category > 2       1.081      0.559      0.392      2.981
+    Category > 3       1.300      0.926      0.322      5.253
+ W7_PA
+    Category > 1       1.560      2.254      0.092     26.480
+    Category > 2       0.851      0.555      0.237      3.058
+    Category > 3       0.302      0.277      0.050      1.822
+ W8_PA
+    Category > 1   50473.926      0.000  50473.934  50473.934
+    Category > 2       0.701      0.352      0.262      1.876
+    Category > 3       0.754      0.637      0.144      3.947
+ W4_FV
+    Category > 1       2.302      1.019      0.967      5.480
+ W5_FV
+    Category > 1      13.235      6.167      5.310     32.987
+ W6_FV
+    Category > 1      10.982      5.801      3.900     30.925
+ W7_FV
+    Category > 1       8.182      4.449      2.818     23.753
+ W8_FV
+    Category > 1      13.506      6.682      5.121     35.619
+
+Latent Class 2 Compared to Latent Class 3
+
+ W4_SMOKE
+    Category > 1       3.072      3.874      0.259     36.384
+ W5_SMOKE
+    Category > 1   76665.617      0.000  76665.617  76665.617
+ W6_SMOKE
+    Category > 1       2.149      2.553      0.209     22.058
+ W7_SMOKE
+    Category > 1   27489.477      0.000  27489.477  27489.477
+ W8_SMOKE
+    Category > 1       0.559      0.566      0.077      4.061
+ W4_DRINK
+    Category > 1       1.632      0.886      0.563      4.729
+    Category > 2       0.732      0.407      0.247      2.174
+    Category > 3   35416.148      0.000  35416.145  35416.145
+ W5_DRINK
+    Category > 1       2.435      1.237      0.900      6.589
+    Category > 2       0.641      0.371      0.206      1.994
+    Category > 3       0.000      0.000      0.000      0.000
+ W6_DRINK
+    Category > 1       2.644      1.262      1.038      6.738
+    Category > 2       0.679      0.372      0.232      1.989
+    Category > 3    5654.755      0.000   5654.755   5654.755
+ W7_DRINK
+    Category > 1       2.316      1.044      0.957      5.604
+    Category > 2       0.478      0.297      0.141      1.614
+    Category > 3       1.000      0.000      1.000      1.000
+ W8_DRINK
+    Category > 1       1.074      0.391      0.527      2.191
+    Category > 2       0.511      0.287      0.170      1.536
+    Category > 3       1.000      0.000      1.000      1.000
+ W4_PA
+    Category > 1       1.000      0.000      1.000      1.000
+    Category > 2       0.085      0.027      0.045      0.159
+    Category > 3       0.083      0.025      0.046      0.150
+ W5_PA
+    Category > 1       1.000      0.000      1.000      1.000
+    Category > 2       0.074      0.025      0.039      0.142
+    Category > 3       0.072      0.022      0.040      0.130
+ W6_PA
+    Category > 1   20445.109      0.000  20445.109  20445.109
+    Category > 2       0.030      0.012      0.014      0.065
+    Category > 3       0.014      0.007      0.005      0.036
+ W7_PA
+    Category > 1       0.000      0.000      0.000      0.000
+    Category > 2       0.059      0.019      0.031      0.111
+    Category > 3       0.048      0.017      0.024      0.096
+ W8_PA
+    Category > 1       0.000      0.000      0.000      0.000
+    Category > 2       0.052      0.018      0.026      0.104
+    Category > 3       0.027      0.014      0.010      0.075
+ W4_FV
+    Category > 1       1.486      0.435      0.837      2.639
+ W5_FV
+    Category > 1       3.067      1.349      1.295      7.261
+ W6_FV
+    Category > 1       5.755      3.047      2.039     16.245
+ W7_FV
+    Category > 1       4.325      2.079      1.686     11.093
+ W8_FV
+    Category > 1       3.005      1.491      1.136      7.946
+
+Latent Class 2 Compared to Latent Class 4
+
+ W4_SMOKE
+    Category > 1       0.457      0.396      0.083      2.496
+ W5_SMOKE
+    Category > 1       1.671      1.771      0.209     13.331
+ W6_SMOKE
+    Category > 1       9.620     11.326      0.957     96.689
+ W7_SMOKE
+    Category > 1   27489.477      0.000  27489.477  27489.477
+ W8_SMOKE
+    Category > 1       4.582      5.926      0.363     57.797
+ W4_DRINK
+    Category > 1       0.124      0.101      0.026      0.606
+    Category > 2       0.015      0.005      0.008      0.031
+    Category > 3       0.056      0.050      0.010      0.319
+ W5_DRINK
+    Category > 1       0.089      0.069      0.020      0.405
+    Category > 2       0.020      0.007      0.010      0.040
+    Category > 3       0.000      0.000      0.000      0.000
+ W6_DRINK
+    Category > 1       0.205      0.135      0.057      0.743
+    Category > 2       0.017      0.007      0.008      0.038
+    Category > 3       0.010      0.016      0.000      0.219
+ W7_DRINK
+    Category > 1       0.127      0.099      0.028      0.584
+    Category > 2       0.012      0.005      0.005      0.027
+    Category > 3       0.000      0.000      0.000      0.000
+ W8_DRINK
+    Category > 1       0.039      0.037      0.006      0.249
+    Category > 2       0.021      0.008      0.010      0.043
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1    8444.956      0.000   8444.956   8444.956
+    Category > 2       0.544      0.187      0.278      1.066
+    Category > 3       0.462      0.176      0.219      0.975
+ W5_PA
+    Category > 1   27457.773      0.000  27457.773  27457.773
+    Category > 2       0.565      0.187      0.295      1.081
+    Category > 3       0.398      0.153      0.187      0.847
+ W6_PA
+    Category > 1   25968.721      0.000  25968.721  25968.721
+    Category > 2       0.375      0.149      0.172      0.818
+    Category > 3       0.103      0.067      0.029      0.366
+ W7_PA
+    Category > 1       2.088      2.708      0.164     26.529
+    Category > 2       0.484      0.174      0.239      0.980
+    Category > 3       0.311      0.150      0.121      0.800
+ W8_PA
+    Category > 1       2.063      2.577      0.178     23.858
+    Category > 2       0.427      0.164      0.201      0.908
+    Category > 3       0.163      0.109      0.044      0.602
+ W4_FV
+    Category > 1       2.412      0.546      1.548      3.759
+ W5_FV
+    Category > 1       4.653      1.718      2.256      9.594
+ W6_FV
+    Category > 1      10.292      4.888      4.057     26.110
+ W7_FV
+    Category > 1       6.833      2.833      3.031     15.402
+ W8_FV
+    Category > 1       6.209      2.651      2.688     14.338
+
+Latent Class 2 Compared to Latent Class 5
+
+ W4_SMOKE
+    Category > 1       0.000      0.000      0.000      0.002
+ W5_SMOKE
+    Category > 1       0.001      0.001      0.000      0.005
+ W6_SMOKE
+    Category > 1       0.002      0.002      0.001      0.010
+ W7_SMOKE
+    Category > 1       0.002      0.001      0.000      0.008
+ W8_SMOKE
+    Category > 1       0.003      0.003      0.001      0.018
+ W4_DRINK
+    Category > 1       4.438      2.250      1.643     11.990
+    Category > 2       0.389      0.142      0.190      0.794
+    Category > 3       0.145      0.141      0.021      0.974
+ W5_DRINK
+    Category > 1       4.704      2.395      1.734     12.759
+    Category > 2       0.374      0.144      0.176      0.794
+    Category > 3       0.000      0.000      0.000      0.000
+ W6_DRINK
+    Category > 1       6.045      2.740      2.486     14.696
+    Category > 2       0.278      0.103      0.134      0.576
+    Category > 3       0.013      0.021      0.001      0.300
+ W7_DRINK
+    Category > 1       6.497      2.844      2.754     15.323
+    Category > 2       0.248      0.109      0.105      0.589
+    Category > 3       0.000      0.000      0.000      0.000
+ W8_DRINK
+    Category > 1       3.300      1.115      1.701      6.400
+    Category > 2       0.280      0.109      0.130      0.602
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1   57304.137      0.000  57304.137  57304.137
+    Category > 2       1.435      0.476      0.749      2.750
+    Category > 3       1.075      0.429      0.492      2.349
+ W5_PA
+    Category > 1   58101.840      0.000  58101.836  58101.836
+    Category > 2       1.397      0.449      0.744      2.624
+    Category > 3       1.056      0.422      0.483      2.310
+ W6_PA
+    Category > 1   98471.398      0.000  98471.406  98471.406
+    Category > 2       0.963      0.350      0.472      1.965
+    Category > 3       0.259      0.159      0.078      0.863
+ W7_PA
+    Category > 1      15.501     18.428      1.508    159.343
+    Category > 2       0.991      0.342      0.503      1.950
+    Category > 3       0.503      0.228      0.207      1.221
+ W8_PA
+    Category > 1       6.050      6.870      0.653     56.023
+    Category > 2       1.191      0.445      0.573      2.479
+    Category > 3       0.267      0.169      0.078      0.922
+ W4_FV
+    Category > 1       4.726      1.282      2.777      8.044
+ W5_FV
+    Category > 1      11.376      4.823      4.956     26.113
+ W6_FV
+    Category > 1      25.237     12.883      9.279     68.641
+ W7_FV
+    Category > 1      13.052      5.866      5.409     31.494
+ W8_FV
+    Category > 1       9.816      4.587      3.928     24.530
+
+Latent Class 2 Compared to Latent Class 6
+
+ W4_SMOKE
+    Category > 1       0.519      0.665      0.042      6.389
+ W5_SMOKE
+    Category > 1       0.557      0.812      0.032      9.679
+ W6_SMOKE
+    Category > 1       3.731      4.406      0.369     37.760
+ W7_SMOKE
+    Category > 1   27489.477      0.000  27489.477  27489.477
+ W8_SMOKE
+    Category > 1   41643.117      0.000  41643.121  41643.121
+ W4_DRINK
+    Category > 1       1.949      1.334      0.510      7.455
+    Category > 2       1.163      0.563      0.451      3.003
+    Category > 3   35416.148      0.000  35416.145  35416.145
+ W5_DRINK
+    Category > 1       2.735      2.199      0.566     13.221
+    Category > 2       1.026      0.586      0.335      3.140
+    Category > 3       1.000      0.000      1.000      1.000
+ W6_DRINK
+    Category > 1       2.027      1.452      0.498      8.253
+    Category > 2       1.455      0.897      0.434      4.873
+    Category > 3       0.183      0.345      0.005      7.413
+ W7_DRINK
+    Category > 1       3.015      2.093      0.773     11.754
+    Category > 2       1.116      0.673      0.342      3.641
+    Category > 3       1.000      0.000      1.000      1.000
+ W8_DRINK
+    Category > 1       1.480      0.818      0.501      4.374
+    Category > 2       1.519      0.842      0.513      4.500
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1   53062.297      0.000  53062.297  53062.297
+    Category > 2       1.562      0.596      0.740      3.300
+    Category > 3       2.135      1.210      0.703      6.483
+ W5_PA
+    Category > 1   91342.977      0.000  91342.969  91342.969
+    Category > 2       2.018      0.767      0.958      4.251
+    Category > 3       2.025      1.116      0.688      5.964
+ W6_PA
+    Category > 1   42978.617      0.000  42978.621  42978.621
+    Category > 2       1.993      0.897      0.825      4.813
+    Category > 3       0.747      0.553      0.175      3.185
+ W7_PA
+    Category > 1       6.225      8.705      0.402     96.486
+    Category > 2       2.778      1.335      1.083      7.124
+    Category > 3       1.582      1.026      0.444      5.639
+ W8_PA
+    Category > 1       4.260      4.928      0.441     41.116
+    Category > 2       1.787      0.758      0.778      4.105
+    Category > 3       1.170      0.887      0.264      5.175
+ W4_FV
+    Category > 1       5.241      1.553      2.931      9.369
+ W5_FV
+    Category > 1      43.196     17.435     19.582     95.285
+ W6_FV
+    Category > 1      80.078     38.410     31.276    205.027
+ W7_FV
+    Category > 1      51.056     21.445     22.414    116.299
+ W8_FV
+    Category > 1      54.123     24.800     22.046    132.871
+
+Latent Class 3 Compared to Latent Class 4
+
+ W4_SMOKE
+    Category > 1       0.149      0.159      0.018      1.213
+ W5_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W6_SMOKE
+    Category > 1       4.476      6.393      0.272     73.555
+ W7_SMOKE
+    Category > 1       1.000      0.000      1.000      1.000
+ W8_SMOKE
+    Category > 1       8.191      9.761      0.792     84.673
+ W4_DRINK
+    Category > 1       0.076      0.057      0.018      0.327
+    Category > 2       0.021      0.011      0.008      0.056
+    Category > 3       0.000      0.000      0.000      0.000
+ W5_DRINK
+    Category > 1       0.037      0.025      0.010      0.138
+    Category > 2       0.031      0.014      0.013      0.074
+    Category > 3       0.012      0.012      0.002      0.090
+ W6_DRINK
+    Category > 1       0.078      0.040      0.028      0.216
+    Category > 2       0.026      0.010      0.012      0.054
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       0.055      0.040      0.013      0.225
+    Category > 2       0.025      0.013      0.009      0.068
+    Category > 3       0.000      0.000      0.000      0.000
+ W8_DRINK
+    Category > 1       0.036      0.033      0.006      0.218
+    Category > 2       0.041      0.019      0.016      0.102
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1    8444.956      0.000   8444.956   8444.956
+    Category > 2       6.422      2.138      3.345     12.331
+    Category > 3       5.569      2.015      2.740     11.319
+ W5_PA
+    Category > 1   27457.773      0.000  27457.773  27457.773
+    Category > 2       7.622      2.912      3.604     16.117
+    Category > 3       5.509      2.061      2.646     11.468
+ W6_PA
+    Category > 1       1.270      2.137      0.047     34.379
+    Category > 2      12.552      6.347      4.659     33.820
+    Category > 3       7.581      3.669      2.936     19.576
+ W7_PA
+    Category > 1   18993.107      0.000  18993.107  18993.107
+    Category > 2       8.226      2.858      4.164     16.251
+    Category > 3       6.433      2.498      3.005     13.771
+ W8_PA
+    Category > 1   24444.285      0.000  24444.287  24444.287
+    Category > 2       8.278      3.423      3.681     18.616
+    Category > 3       5.993      2.335      2.793     12.861
+ W4_FV
+    Category > 1       1.623      0.432      0.964      2.734
+ W5_FV
+    Category > 1       1.517      0.420      0.882      2.610
+ W6_FV
+    Category > 1       1.788      0.494      1.041      3.074
+ W7_FV
+    Category > 1       1.580      0.438      0.917      2.721
+ W8_FV
+    Category > 1       2.066      0.586      1.185      3.603
+
+Latent Class 3 Compared to Latent Class 5
+
+ W4_SMOKE
+    Category > 1       0.000      0.000      0.000      0.001
+ W5_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W6_SMOKE
+    Category > 1       0.001      0.001      0.000      0.009
+ W7_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W8_SMOKE
+    Category > 1       0.006      0.004      0.002      0.023
+ W4_DRINK
+    Category > 1       2.719      1.100      1.230      6.010
+    Category > 2       0.531      0.265      0.200      1.412
+    Category > 3       0.000      0.000      0.000      0.000
+ W5_DRINK
+    Category > 1       1.932      0.657      0.992      3.761
+    Category > 2       0.584      0.284      0.225      1.517
+    Category > 3       0.021      0.023      0.003      0.177
+ W6_DRINK
+    Category > 1       2.286      0.749      1.202      4.347
+    Category > 2       0.409      0.184      0.169      0.988
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       2.805      0.980      1.415      5.563
+    Category > 2       0.520      0.264      0.192      1.408
+    Category > 3       0.000      0.000      0.000      0.000
+ W8_DRINK
+    Category > 1       3.072      1.012      1.611      5.858
+    Category > 2       0.549      0.258      0.218      1.377
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1   57304.137      0.000  57304.137  57304.137
+    Category > 2      16.933      5.478      8.982     31.924
+    Category > 3      12.966      4.649      6.422     26.182
+ W5_PA
+    Category > 1   58101.840      0.000  58101.836  58101.836
+    Category > 2      18.857      6.889      9.214     38.589
+    Category > 3      14.605      5.430      7.048     30.268
+ W6_PA
+    Category > 1       4.816      7.577      0.221    105.141
+    Category > 2      32.272     14.855     13.092     79.552
+    Category > 3      19.123      8.121      8.318     43.961
+ W7_PA
+    Category > 1   *********      0.000  *********  *********
+    Category > 2      16.844      5.769      8.607     32.961
+    Category > 3      10.408      3.741      5.145     21.052
+ W8_PA
+    Category > 1   71675.547      0.000  71675.547  71675.547
+    Category > 2      23.117      9.067     10.717     49.864
+    Category > 3       9.825      3.497      4.890     19.738
+ W4_FV
+    Category > 1       3.180      0.907      1.818      5.563
+ W5_FV
+    Category > 1       3.709      1.069      2.109      6.526
+ W6_FV
+    Category > 1       4.385      1.287      2.467      7.796
+ W7_FV
+    Category > 1       3.018      0.880      1.704      5.345
+ W8_FV
+    Category > 1       3.267      0.940      1.859      5.741
+
+Latent Class 3 Compared to Latent Class 6
+
+ W4_SMOKE
+    Category > 1       0.169      0.246      0.010      2.938
+ W5_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W6_SMOKE
+    Category > 1       1.736      2.492      0.104     28.937
+ W7_SMOKE
+    Category > 1       1.000      0.000      1.000      1.000
+ W8_SMOKE
+    Category > 1   74440.992      0.000  74440.984  74440.984
+ W4_DRINK
+    Category > 1       1.194      0.719      0.367      3.888
+    Category > 2       1.589      1.061      0.429      5.882
+    Category > 3       1.000      0.000      1.000      1.000
+ W5_DRINK
+    Category > 1       1.123      0.683      0.341      3.696
+    Category > 2       1.600      1.117      0.408      6.284
+    Category > 3    6324.208      0.000   6324.208   6324.208
+ W6_DRINK
+    Category > 1       0.767      0.458      0.237      2.475
+    Category > 2       2.142      1.565      0.512      8.972
+    Category > 3       0.000      0.000      0.000      0.000
+ W7_DRINK
+    Category > 1       1.302      0.801      0.390      4.346
+    Category > 2       2.336      1.681      0.570      9.569
+    Category > 3       1.000      0.000      1.000      1.000
+ W8_DRINK
+    Category > 1       1.378      0.745      0.478      3.976
+    Category > 2       2.974      2.055      0.768     11.520
+    Category > 3       0.000      0.000      0.000      0.000
+ W4_PA
+    Category > 1   53062.297      0.000  53062.297  53062.297
+    Category > 2      18.434      6.625      9.113     37.286
+    Category > 3      25.755     13.170      9.453     70.170
+ W5_PA
+    Category > 1   91342.977      0.000  91342.969  91342.969
+    Category > 2      27.236     10.673     12.635     58.709
+    Category > 3      28.011     14.230     10.349     75.817
+ W6_PA
+    Category > 1       2.102      4.643      0.028    159.551
+    Category > 2      66.741     32.409     25.766    172.877
+    Category > 3      55.152     29.877     19.073    159.473
+ W7_PA
+    Category > 1   56639.332      0.000  56639.332  56639.332
+    Category > 2      47.235     23.394     17.893    124.694
+    Category > 3      32.757     17.612     11.419     93.968
+ W8_PA
+    Category > 1   50473.926      0.000  50473.934  50473.934
+    Category > 2      34.663     13.843     15.847     75.825
+    Category > 3      42.974     22.155     15.645    118.047
+ W4_FV
+    Category > 1       3.527      1.187      1.824      6.820
+ W5_FV
+    Category > 1      14.086      5.438      6.610     30.019
+ W6_FV
+    Category > 1      13.914      5.951      6.017     32.177
+ W7_FV
+    Category > 1      11.806      4.833      5.292     26.338
+ W8_FV
+    Category > 1      18.013      7.305      8.135     39.884
+
+Latent Class 4 Compared to Latent Class 5
+
+ W4_SMOKE
+    Category > 1       0.000      0.000      0.000      0.002
+ W5_SMOKE
+    Category > 1       0.001      0.000      0.000      0.003
+ W6_SMOKE
+    Category > 1       0.000      0.000      0.000      0.002
+ W7_SMOKE
+    Category > 1       0.000      0.000      0.000      0.000
+ W8_SMOKE
+    Category > 1       0.001      0.001      0.000      0.006
+ W4_DRINK
+    Category > 1      35.689     23.330      9.910    128.520
+    Category > 2      25.438      8.818     12.894     50.184
+    Category > 3       2.605      1.180      1.072      6.328
+ W5_DRINK
+    Category > 1      52.713     34.754     14.478    191.923
+    Category > 2      18.921      5.732     10.449     34.261
+    Category > 3       1.807      0.689      0.856      3.815
+ W6_DRINK
+    Category > 1      29.472     15.802     10.304     84.295
+    Category > 2      15.874      5.363      8.186     30.781
+    Category > 3       1.324      0.474      0.656      2.671
+ W7_DRINK
+    Category > 1      51.215     35.132     13.350    196.478
+    Category > 2      20.805      6.978     10.781     40.150
+    Category > 3       2.714      1.139      1.192      6.178
+ W8_DRINK
+    Category > 1      84.438     76.524     14.292    498.859
+    Category > 2      13.452      4.213      7.281     24.853
+    Category > 3       1.215      0.458      0.580      2.543
+ W4_PA
+    Category > 1       6.786      8.377      0.604     76.277
+    Category > 2       2.637      0.694      1.573      4.418
+    Category > 3       2.328      0.809      1.178      4.602
+ W5_PA
+    Category > 1       2.116      2.357      0.238     18.787
+    Category > 2       2.474      0.634      1.497      4.090
+    Category > 3       2.651      0.892      1.371      5.127
+ W6_PA
+    Category > 1       3.792      3.448      0.638     22.535
+    Category > 2       2.571      0.705      1.503      4.399
+    Category > 3       2.522      0.842      1.311      4.852
+ W7_PA
+    Category > 1       7.426      6.535      1.323     41.669
+    Category > 2       2.048      0.564      1.193      3.514
+    Category > 3       1.618      0.552      0.829      3.158
+ W8_PA
+    Category > 1       2.932      2.641      0.502     17.140
+    Category > 2       2.793      0.783      1.612      4.839
+    Category > 3       1.639      0.551      0.848      3.169
+ W4_FV
+    Category > 1       1.959      0.463      1.232      3.114
+ W5_FV
+    Category > 1       2.445      0.595      1.518      3.939
+ W6_FV
+    Category > 1       2.452      0.597      1.522      3.950
+ W7_FV
+    Category > 1       1.910      0.441      1.215      3.002
+ W8_FV
+    Category > 1       1.581      0.371      0.998      2.505
+
+Latent Class 4 Compared to Latent Class 6
+
+ W4_SMOKE
+    Category > 1       1.137      1.290      0.123     10.506
+ W5_SMOKE
+    Category > 1       0.334      0.471      0.021      5.311
+ W6_SMOKE
+    Category > 1       0.388      0.553      0.024      6.357
+ W7_SMOKE
+    Category > 1       1.000      0.000      1.000      1.000
+ W8_SMOKE
+    Category > 1    9088.223      0.000   9088.223   9088.223
+ W4_DRINK
+    Category > 1      15.674     10.940      3.991     61.564
+    Category > 2      76.112     33.962     31.742    182.504
+    Category > 3   *********      0.000  *********  *********
+ W5_DRINK
+    Category > 1      30.644     24.593      6.356    147.733
+    Category > 2      51.873     25.775     19.588    137.372
+    Category > 3   *********      0.000  *********  *********
+ W6_DRINK
+    Category > 1       9.882      7.041      2.445     39.936
+    Category > 2      83.206     48.552     26.513    261.128
+    Category > 3      18.203     19.770      2.166    152.982
+ W7_DRINK
+    Category > 1      23.766     18.849      5.022    112.475
+    Category > 2      93.418     45.158     36.221    240.938
+    Category > 3   *********      0.000  *********  *********
+ W8_DRINK
+    Category > 1      37.872     36.257      5.800    247.300
+    Category > 2      72.931     35.449     28.130    189.083
+    Category > 3      16.512     18.070      1.933    141.026
+ W4_PA
+    Category > 1       6.283      7.444      0.616     64.076
+    Category > 2       2.870      0.922      1.529      5.387
+    Category > 3       4.625      2.575      1.553     13.773
+ W5_PA
+    Category > 1       3.327      4.007      0.314     35.254
+    Category > 2       3.573      1.201      1.849      6.905
+    Category > 3       5.085      2.679      1.811     14.279
+ W6_PA
+    Category > 1       1.655      2.198      0.123     22.351
+    Category > 2       5.317      2.094      2.457     11.505
+    Category > 3       7.275      4.245      2.318     22.832
+ W7_PA
+    Category > 1       2.982      3.463      0.306     29.044
+    Category > 2       5.742      2.723      2.267     14.546
+    Category > 3       5.092      3.027      1.588     16.326
+ W8_PA
+    Category > 1       2.065      1.889      0.344     12.405
+    Category > 2       4.188      1.587      1.992      8.801
+    Category > 3       7.170      4.255      2.241     22.946
+ W4_FV
+    Category > 1       2.172      0.599      1.266      3.729
+ W5_FV
+    Category > 1       9.284      3.135      4.790     17.997
+ W6_FV
+    Category > 1       7.780      2.874      3.772     16.049
+ W7_FV
+    Category > 1       7.472      2.576      3.802     14.686
+ W8_FV
+    Category > 1       8.717      3.056      4.385     17.331
+
+Latent Class 5 Compared to Latent Class 6
+
+ W4_SMOKE
+    Category > 1    4191.818   6109.678    240.842  72957.875
+ W5_SMOKE
+    Category > 1     617.140    839.325     42.925   8872.760
+ W6_SMOKE
+    Category > 1    1620.426   1772.814    189.829  13832.374
+ W7_SMOKE
+    Category > 1   *********      0.000  *********  *********
+ W8_SMOKE
+    Category > 1   *********      0.000  *********  *********
+ W4_DRINK
+    Category > 1       0.439      0.197      0.182      1.060
+    Category > 2       2.992      1.450      1.157      7.736
+    Category > 3   *********      0.000  *********  *********
+ W5_DRINK
+    Category > 1       0.581      0.317      0.200      1.691
+    Category > 2       2.742      1.465      0.962      7.816
+    Category > 3   *********      0.000  *********  *********
+ W6_DRINK
+    Category > 1       0.335      0.182      0.116      0.971
+    Category > 2       5.242      3.116      1.635     16.808
+    Category > 3      13.753     15.319      1.550    122.044
+ W7_DRINK
+    Category > 1       0.464      0.238      0.170      1.270
+    Category > 2       4.490      2.409      1.569     12.849
+    Category > 3   *********      0.000  *********  *********
+ W8_DRINK
+    Category > 1       0.449      0.209      0.180      1.120
+    Category > 2       5.422      2.861      1.927     15.253
+    Category > 3      13.596     15.280      1.502    123.057
+ W4_PA
+    Category > 1       0.926      0.879      0.144      5.955
+    Category > 2       1.089      0.371      0.559      2.122
+    Category > 3       1.986      1.126      0.654      6.035
+ W5_PA
+    Category > 1       1.572      1.331      0.299      8.263
+    Category > 2       1.444      0.505      0.728      2.865
+    Category > 3       1.918      1.056      0.652      5.642
+ W6_PA
+    Category > 1       0.436      0.535      0.040      4.819
+    Category > 2       2.068      0.818      0.952      4.492
+    Category > 3       2.884      1.667      0.929      8.955
+ W7_PA
+    Category > 1       0.402      0.400      0.057      2.830
+    Category > 2       2.804      1.370      1.077      7.305
+    Category > 3       3.147      1.886      0.973     10.186
+ W8_PA
+    Category > 1       0.704      0.543      0.156      3.188
+    Category > 2       1.500      0.571      0.711      3.164
+    Category > 3       4.374      2.517      1.416     13.509
+ W4_FV
+    Category > 1       1.109      0.370      0.577      2.133
+ W5_FV
+    Category > 1       3.797      1.420      1.825      7.902
+ W6_FV
+    Category > 1       3.173      1.303      1.418      7.098
+ W7_FV
+    Category > 1       3.912      1.503      1.842      8.307
+ W8_FV
+    Category > 1       5.514      2.066      2.645     11.494
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.326E-06
+       (ratio of smallest to largest eigenvalue)
+
+
+TECHNICAL 11 OUTPUT
+
+     Random Starts Specifications for the k-1 Class Analysis Model
+        Number of initial stage random starts                 500
+        Number of final stage optimizations                   100
+
+
+
+     VUONG-LO-MENDELL-RUBIN LIKELIHOOD RATIO TEST FOR 5 (H0) VERSUS 6 CLASSES
+
+          H0 Loglikelihood Value                       -21188.492
+          2 Times the Loglikelihood Difference            543.927
+          Difference in the Number of Parameters               41
+          Mean                                          48193.282
+          Standard Deviation                            66777.533
+          P-Value                                          0.7622
+
+     LO-MENDELL-RUBIN ADJUSTED LRT TEST
+
+          Value                                           542.173
+          P-Value                                          0.7623
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Sample proportions and estimated probabilities
+
+     Beginning Time:  14:38:04
+        Ending Time:  14:41:28
+       Elapsed Time:  00:03:24
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

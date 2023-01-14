@@ -1,0 +1,763 @@
+Mplus VERSION 8.5 (Mac)
+MUTHEN & MUTHEN
+11/10/2022   4:28 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  Step3 - 3step LSAY - Lab9
+  DATA:
+  FILE = "./Step1_MPlus_Outcomes.dat";
+
+  VARIABLE:
+  NAMES = W4_SMOKE W5_SMOKE W6_SMOKE W7_SMOKE W8_SMOKE W4_DRINK W5_DRINK W6_DRINK
+       W7_DRINK W8_DRINK W4_PA W5_PA W6_PA W7_PA W8_PA W4_FV W5_FV W6_FV W7_FV W8_FV
+       FEMALE AGE PAT_INT PAT_HIG SELF_INT SELF_HIG EDU_UPP EDU_TER WEALTH_2 WEALTH_3
+       EYE_4 CIRCUL_4 ENDOCR_4 MUSCUL_4 RESPIR_4 NEOPLA_4 NERVOU_4 MENTAL_4 MULTI_4
+       CMULTI_4 LUNCAN_4 EYE CIRCUL ENDOCR MUSCUL RESPIR NEOPLA NERVOU MENTAL MULTI
+       CMULTI LUNCAN CPROB1 CPROB2 CPROB3 CPROB4 CPROB5 CPROB6 N WEIGHTS;
+   MISSING=.;
+   nominal=N;
+    usevar = n;
+    USEOBSERVATIONS = Female NE -99 AND Age NE -99 AND
+    Pat_Int NE -99 AND
+  Pat_Hig NE -99 AND Self_Int NE -99 AND
+  Self_Hig NE -99 AND Edu_Upp NE -99 AND
+  Edu_Ter NE -99 AND
+  Wealth_2 NE -99 AND Wealth_3 NE -99;
+    missing are all (-99);
+    classes = c(6);
+    CATEGORICAL = Muscul_4;
+    usevar =  Muscul_4;
+    WEIGHT  = Weights;
+  ANALYSIS:
+  estimator = mlr;
+    type = mixture;
+    starts = 0;
+    ITERATIONS = 1000;
+  MODEL:
+  %OVERALL%
+
+     %C#1%
+     [n#1@3.551];
+     [n#2@-0.359];
+     [n#3@-0.744];
+     [n#4@0.855];
+     [n#5@-5.262];
+
+   [Muscul_4$1](m1);
+
+    %C#2%
+   [n#1@3.635];
+   [n#2@6.175];
+   [n#3@3.837];
+   [n#4@0.016];
+   [n#5@-4.895];
+
+   [Muscul_4$1](m2);
+
+
+   %C#3%
+  [n#1@-0.391];
+   [n#2@0.208];
+   [n#3@3.255];
+   [n#4@0.355];
+   [n#5@-4.856];
+
+
+   [Muscul_4$1](m3);
+
+
+    %C#4%
+   [n#1@-0.118];
+   [n#2@-5.902];
+   [n#3@-0.905];
+   [n#4@2.93];
+   [n#5@-4.442];
+
+
+   [Muscul_4$1](m4);
+
+
+
+    %C#5%
+   [n#1@-1.316];
+   [n#2@-2.843];
+   [n#3@-0.178];
+   [n#4@-0.75];
+   [n#5@4.251];
+
+
+   [Muscul_4$1](m5);
+
+
+     %C#6%
+   [n#1@-3.545];
+   [n#2@-8.357];
+   [n#3@-3.614];
+   [n#4@-2.593];
+   [n#5@-6.997];
+
+     [Muscul_4$1](m6);
+  MODEL CONSTRAINT:
+  New (diff12 diff13 diff23 diff14
+    diff24 diff34 diff15 diff16 diff25
+    diff26 diff35 diff36 diff45
+    diff46 diff56);
+    diff12 = m1-m2;  ! test pairwise distal mean differences
+    diff13 = m1-m3;
+    diff23 = m2-m3;
+    diff14 = m1-m4;
+    diff24 = m2-m4;
+    diff34 = m3-m4;
+    diff15 = m1-m5;
+    diff16 = m1-m6;
+    diff25 = m2-m5;
+    diff26 = m2-m6;
+    diff35 = m3-m5;
+    diff36 = m3-m6;
+    diff45 = m4-m5;
+    diff46 = m4-m6;
+    diff56 = m5-m6;
+
+
+  MODEL TEST:
+   0=m1-m2;
+     0=m2-m3;
+     0=m3-m4; ! omnibus test of distal thresholds
+     0=m4-m5;
+     0=m5-m6;
+  OUTPUT:
+  sampstat residual TECH11 TECH14;
+
+
+
+*** WARNING
+  One or more observations has a value of 0 for the WEIGHT variable.
+*** WARNING in OUTPUT command
+  SAMPSTAT option is not available when all outcomes are censored, ordered
+  categorical, unordered categorical (nominal), count or continuous-time
+  survival variables.  Request for SAMPSTAT is ignored.
+*** WARNING in OUTPUT command
+  TECH11 option is not available in conjunction with nonlinear constraints
+  through the use of MODEL CONSTRAINT.  Request for TECH11 is ignored.
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with weights.
+  Request for TECH14 is ignored.
+   4 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Step3 - 3step LSAY - Lab9
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3787
+
+Number of dependent variables                                    2
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   MUSCUL_4
+
+  Unordered categorical (nominal)
+   N
+
+Categorical latent variables
+   C
+
+Variables with special functions
+
+  Weight variable       WEIGHTS
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                1000
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Link                                                         LOGIT
+
+Input data file(s)
+  ./Step1_MPlus_Outcomes.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             2
+     Number of y missing data patterns           0
+     Number of u missing data patterns           2
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              MUSCUL_4
+              ________
+ MUSCUL_4       0.999
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    MUSCUL_4
+      Category 1    0.651         2463.489
+      Category 2    0.349         1320.548
+    N
+      Category 1    0.211          798.978
+      Category 2    0.105          398.439
+      Category 3    0.176          667.361
+      Category 4    0.231          874.945
+      Category 5    0.101          383.414
+      Category 6    0.175          663.864
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       11
+
+Loglikelihood
+
+          H0 Value                       -8989.814
+          H0 Scaling Correction Factor      1.2779
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   18001.627
+          Bayesian (BIC)                 18070.260
+          Sample-Size Adjusted BIC       18035.307
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes
+
+          Pearson Chi-Square
+
+          Value                              0.000
+          Degrees of freedom cannot be computed for this model part.
+
+          Likelihood Ratio Chi-Square
+
+          Value                              0.000
+          Degrees of freedom cannot be computed for this model part.
+
+Chi-Square Test for MCAR under the Unrestricted Latent Class Indicator Model
+
+          Pearson Chi-Square
+
+          Value                              0.000
+          Degrees of Freedom                     0
+          P-Value                           1.0000
+
+          Likelihood Ratio Chi-Square
+
+          Value                              0.000
+          Degrees of Freedom                     0
+          P-Value                           1.0000
+
+Wald Test of Parameter Constraints
+
+          Value                            111.167
+          Degrees of Freedom                     5
+          P-Value                           0.0000
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        793.24384          0.20946
+       2        419.83754          0.11086
+       3        685.56741          0.18103
+       4        841.23524          0.22214
+       5        396.48331          0.10470
+       6        650.63266          0.17181
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        793.24384          0.20946
+       2        419.83754          0.11086
+       3        685.56741          0.18103
+       4        841.23524          0.22214
+       5        396.48331          0.10470
+       6        650.63266          0.17181
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              799          0.21098
+       2              398          0.10521
+       3              667          0.17622
+       4              875          0.23104
+       5              383          0.10124
+       6              664          0.17530
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.731
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6
+
+    1   0.879    0.035    0.019    0.044    0.002    0.021
+    2   0.035    0.893    0.070    0.000    0.001    0.000
+    3   0.014    0.051    0.880    0.024    0.007    0.023
+    4   0.054    0.001    0.037    0.856    0.003    0.049
+    5   0.000    0.000    0.000    0.001    0.997    0.001
+    6   0.030    0.001    0.034    0.060    0.008    0.866
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6
+
+    1   0.885    0.018    0.012    0.060    0.000    0.025
+    2   0.067    0.848    0.082    0.002    0.000    0.002
+    3   0.022    0.041    0.857    0.047    0.000    0.033
+    4   0.042    0.000    0.019    0.890    0.001    0.048
+    5   0.004    0.001    0.011    0.006    0.964    0.014
+    6   0.026    0.000    0.024    0.066    0.001    0.884
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6
+
+    1      3.551   -0.359   -0.744    0.855   -5.262    0.000
+    2      3.635    6.175    3.837    0.016   -4.895    0.000
+    3     -0.391    0.208    3.255    0.355   -4.856    0.000
+    4     -0.118   -5.902   -0.905    2.930   -4.442    0.000
+    5     -1.316   -2.843   -0.178   -0.750    4.251    0.000
+    6     -3.545   -8.357   -3.614   -2.593   -6.997    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Means
+    N#1                3.551      0.000    999.000    999.000
+    N#2               -0.359      0.000    999.000    999.000
+    N#3               -0.744      0.000    999.000    999.000
+    N#4                0.855      0.000    999.000    999.000
+    N#5               -5.262      0.000    999.000    999.000
+
+ Thresholds
+    MUSCUL_4$1         1.336      0.108     12.364      0.000
+
+Latent Class 2
+
+ Means
+    N#1                3.635      0.000    999.000    999.000
+    N#2                6.175      0.000    999.000    999.000
+    N#3                3.837      0.000    999.000    999.000
+    N#4                0.016      0.000    999.000    999.000
+    N#5               -4.895      0.000    999.000    999.000
+
+ Thresholds
+    MUSCUL_4$1         1.302      0.144      9.070      0.000
+
+Latent Class 3
+
+ Means
+    N#1               -0.391      0.000    999.000    999.000
+    N#2                0.208      0.000    999.000    999.000
+    N#3                3.255      0.000    999.000    999.000
+    N#4                0.355      0.000    999.000    999.000
+    N#5               -4.856      0.000    999.000    999.000
+
+ Thresholds
+    MUSCUL_4$1         0.596      0.102      5.831      0.000
+
+Latent Class 4
+
+ Means
+    N#1               -0.118      0.000    999.000    999.000
+    N#2               -5.902      0.000    999.000    999.000
+    N#3               -0.905      0.000    999.000    999.000
+    N#4                2.930      0.000    999.000    999.000
+    N#5               -4.442      0.000    999.000    999.000
+
+ Thresholds
+    MUSCUL_4$1         0.037      0.094      0.390      0.697
+
+Latent Class 5
+
+ Means
+    N#1               -1.316      0.000    999.000    999.000
+    N#2               -2.843      0.000    999.000    999.000
+    N#3               -0.178      0.000    999.000    999.000
+    N#4               -0.750      0.000    999.000    999.000
+    N#5                4.251      0.000    999.000    999.000
+
+ Thresholds
+    MUSCUL_4$1         0.589      0.128      4.592      0.000
+
+Latent Class 6
+
+ Means
+    N#1               -3.545      0.000    999.000    999.000
+    N#2               -8.357      0.000    999.000    999.000
+    N#3               -3.614      0.000    999.000    999.000
+    N#4               -2.593      0.000    999.000    999.000
+    N#5               -6.997      0.000    999.000    999.000
+
+ Thresholds
+    MUSCUL_4$1         0.351      0.111      3.168      0.002
+
+Categorical Latent Variables
+
+ Means
+    C#1                0.198      0.071      2.779      0.005
+    C#2               -0.438      0.081     -5.430      0.000
+    C#3                0.052      0.075      0.693      0.488
+    C#4                0.257      0.076      3.382      0.001
+    C#5               -0.495      0.082     -6.045      0.000
+
+New/Additional Parameters
+    DIFF12             0.034      0.186      0.182      0.856
+    DIFF13             0.740      0.150      4.916      0.000
+    DIFF23             0.706      0.187      3.773      0.000
+    DIFF14             1.299      0.150      8.647      0.000
+    DIFF24             1.265      0.171      7.420      0.000
+    DIFF34             0.560      0.143      3.915      0.000
+    DIFF15             0.746      0.168      4.444      0.000
+    DIFF16             0.984      0.158      6.214      0.000
+    DIFF25             0.713      0.193      3.700      0.000
+    DIFF26             0.950      0.181      5.257      0.000
+    DIFF35             0.007      0.165      0.041      0.967
+    DIFF36             0.245      0.155      1.577      0.115
+    DIFF45            -0.553      0.159     -3.472      0.001
+    DIFF46            -0.315      0.153     -2.053      0.040
+    DIFF56             0.238      0.171      1.394      0.163
+
+
+RESULTS IN PROBABILITY SCALE
+
+Latent Class 1
+
+ MUSCUL_4
+    Category 1         0.792      0.018     44.455      0.000
+    Category 2         0.208      0.018     11.689      0.000
+
+Latent Class 2
+
+ MUSCUL_4
+    Category 1         0.786      0.024     32.577      0.000
+    Category 2         0.214      0.024      8.862      0.000
+
+Latent Class 3
+
+ MUSCUL_4
+    Category 1         0.645      0.023     27.538      0.000
+    Category 2         0.355      0.023     15.173      0.000
+
+Latent Class 4
+
+ MUSCUL_4
+    Category 1         0.509      0.023     21.746      0.000
+    Category 2         0.491      0.023     20.965      0.000
+
+Latent Class 5
+
+ MUSCUL_4
+    Category 1         0.643      0.029     21.839      0.000
+    Category 2         0.357      0.029     12.114      0.000
+
+Latent Class 6
+
+ MUSCUL_4
+    Category 1         0.587      0.027     21.821      0.000
+    Category 2         0.413      0.027     15.354      0.000
+
+
+LATENT CLASS ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+Latent Class 1 Compared to Latent Class 2
+
+ MUSCUL_4
+    Category > 1       0.967      0.180      0.671      1.393
+
+Latent Class 1 Compared to Latent Class 3
+
+ MUSCUL_4
+    Category > 1       0.477      0.072      0.355      0.641
+
+Latent Class 1 Compared to Latent Class 4
+
+ MUSCUL_4
+    Category > 1       0.273      0.041      0.203      0.366
+
+Latent Class 1 Compared to Latent Class 5
+
+ MUSCUL_4
+    Category > 1       0.474      0.080      0.341      0.659
+
+Latent Class 1 Compared to Latent Class 6
+
+ MUSCUL_4
+    Category > 1       0.374      0.059      0.274      0.510
+
+Latent Class 2 Compared to Latent Class 3
+
+ MUSCUL_4
+    Category > 1       0.494      0.092      0.342      0.712
+
+Latent Class 2 Compared to Latent Class 4
+
+ MUSCUL_4
+    Category > 1       0.282      0.048      0.202      0.394
+
+Latent Class 2 Compared to Latent Class 5
+
+ MUSCUL_4
+    Category > 1       0.490      0.094      0.336      0.715
+
+Latent Class 2 Compared to Latent Class 6
+
+ MUSCUL_4
+    Category > 1       0.387      0.070      0.271      0.551
+
+Latent Class 3 Compared to Latent Class 4
+
+ MUSCUL_4
+    Category > 1       0.571      0.082      0.432      0.756
+
+Latent Class 3 Compared to Latent Class 5
+
+ MUSCUL_4
+    Category > 1       0.993      0.164      0.719      1.372
+
+Latent Class 3 Compared to Latent Class 6
+
+ MUSCUL_4
+    Category > 1       0.783      0.121      0.578      1.061
+
+Latent Class 4 Compared to Latent Class 5
+
+ MUSCUL_4
+    Category > 1       1.738      0.277      1.272      2.374
+
+Latent Class 4 Compared to Latent Class 6
+
+ MUSCUL_4
+    Category > 1       1.370      0.210      1.014      1.851
+
+Latent Class 5 Compared to Latent Class 6
+
+ MUSCUL_4
+    Category > 1       0.788      0.134      0.564      1.101
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.334E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+RESIDUAL OUTPUT
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 1
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.885          0.885                  0.000                0.000
+       Category 1        0.018          0.018                  0.000                0.000
+       Category 2        0.012          0.012                  0.000                0.000
+       Category 3        0.060          0.060                  0.000                0.000
+       Category 4        0.000          0.000                  0.000                0.000
+       Category 5        0.025          0.025                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 2
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.067          0.067                  0.000                0.000
+       Category 1        0.848          0.848                  0.000                0.000
+       Category 2        0.082          0.082                  0.000                0.000
+       Category 3        0.002          0.002                  0.000                0.000
+       Category 4        0.000          0.000                  0.000                0.000
+       Category 5        0.002          0.002                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 3
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.022          0.022                  0.000                0.000
+       Category 1        0.041          0.041                  0.000                0.000
+       Category 2        0.857          0.857                  0.000                0.000
+       Category 3        0.047          0.047                  0.000                0.000
+       Category 4        0.000          0.000                  0.000                0.000
+       Category 5        0.033          0.033                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 4
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.042          0.042                  0.000                0.000
+       Category 1        0.000          0.000                  0.000                0.000
+       Category 2        0.019          0.019                  0.000                0.000
+       Category 3        0.890          0.890                  0.000                0.000
+       Category 4        0.001          0.001                  0.000                0.000
+       Category 5        0.048          0.048                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 5
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.004          0.004                  0.000                0.000
+       Category 1        0.001          0.001                  0.000                0.000
+       Category 2        0.011          0.011                  0.000                0.000
+       Category 3        0.006          0.006                  0.000                0.000
+       Category 4        0.964          0.964                  0.000                0.000
+       Category 5        0.014          0.014                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 6
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     N
+       Category 0        0.026          0.026                  0.000                0.000
+       Category 1        0.000          0.000                  0.000                0.000
+       Category 2        0.024          0.024                  0.000                0.000
+       Category 3        0.066          0.066                  0.000                0.000
+       Category 4        0.001          0.001                  0.000                0.000
+       Category 5        0.884          0.884                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 1
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MUSCUL_4
+       Category 1        0.792          0.792                  0.000                0.000
+       Category 2        0.208          0.208                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 2
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MUSCUL_4
+       Category 1        0.786          0.786                  0.000                0.000
+       Category 2        0.214          0.214                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 3
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MUSCUL_4
+       Category 1        0.645          0.645                  0.000                0.000
+       Category 2        0.355          0.355                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 4
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MUSCUL_4
+       Category 1        0.509          0.509                  0.000                0.000
+       Category 2        0.491          0.491                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 5
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MUSCUL_4
+       Category 1        0.643          0.643                  0.000                0.000
+       Category 2        0.357          0.357                  0.000                0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT FOR CLASS 6
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     MUSCUL_4
+       Category 1        0.587          0.587                  0.000                0.000
+       Category 2        0.413          0.413                  0.000                0.000
+
+
+     Beginning Time:  16:28:29
+        Ending Time:  16:28:29
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

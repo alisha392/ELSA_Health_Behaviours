@@ -1,0 +1,313 @@
+Mplus VERSION 8.5 (Mac)
+MUTHEN & MUTHEN
+09/24/2022  11:05 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  LCA with covariates;
+  DATA:
+  FILE = "./descriptives_covariates_af54d1f99a558fe2907dab19c87e896a.dat";
+
+  VARIABLE:
+  NAMES = W4_SMOKE W5_SMOKE W6_SMOKE W7_SMOKE W8_SMOKE W4_DRINK W5_DRINK W6_DRINK
+       W7_DRINK W8_DRINK W4_PA W5_PA W6_PA W7_PA W8_PA W4_FV W5_FV W6_FV W7_FV W8_FV
+       FEMALE AGE PAT_INT PAT_HIG SELF_INT SELF_HIG EDU_UPP EDU_TER WEALTH_2 WEALTH_3
+       CPROB1 CPROB2 CPROB3 CPROB4 CPROB5 CPROB6 C WEIGHTS;
+   MISSING=.;
+   CATEGORICAL = Female Pat_Int-Wealth_3;
+    USEVARIABLES = Female-Wealth_3;
+    USEOBSERVATIONS = (C EQ 1);
+    MISSING ARE ALL (-99);
+    WEIGHT        = Weights;
+  ANALYSIS:
+  TYPE = BASIC;
+  OUTPUT:
+  sampstat TECH7;
+  SAVEDATA:
+  FILE = mplus_descriptives_covariates.dat;
+
+
+
+*** WARNING
+  One or more observations has a value of 0 for the WEIGHT variable.
+*** WARNING in OUTPUT command
+  TECH7 option is available only with TYPE=MIXTURE.
+  Request for TECH7 is ignored.
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+LCA with covariates;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         880
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   AGE
+
+  Binary and ordered categorical (ordinal)
+   FEMALE      PAT_INT     PAT_HIG     SELF_INT    SELF_HIG    EDU_UPP
+   EDU_TER     WEALTH_2    WEALTH_3
+
+Variables with special functions
+
+  Weight variable       WEIGHTS
+
+Estimator                                                    WLSMV
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Parameterization                                             DELTA
+Link                                                        PROBIT
+
+Input data file(s)
+  ./descriptives_covariates_af54d1f99a558fe2907dab19c87e896a.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+SUMMARY OF MISSING DATA PATTERNS
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1
+ FEMALE    x
+ AGE       x
+ PAT_INT   x
+ PAT_HIG   x
+ SELF_INT  x
+ SELF_HIG  x
+ EDU_UPP   x
+ EDU_TER   x
+ WEALTH_2  x
+ WEALTH_3  x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency
+          1         880
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              FEMALE        AGE           PAT_INT       PAT_HIG       SELF_INT
+              ________      ________      ________      ________      ________
+ FEMALE         1.000
+ AGE            1.000         1.000
+ PAT_INT        1.000         1.000         1.000
+ PAT_HIG        1.000         1.000         1.000         1.000
+ SELF_INT       1.000         1.000         1.000         1.000         1.000
+ SELF_HIG       1.000         1.000         1.000         1.000         1.000
+ EDU_UPP        1.000         1.000         1.000         1.000         1.000
+ EDU_TER        1.000         1.000         1.000         1.000         1.000
+ WEALTH_2       1.000         1.000         1.000         1.000         1.000
+ WEALTH_3       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              SELF_HIG      EDU_UPP       EDU_TER       WEALTH_2      WEALTH_3
+              ________      ________      ________      ________      ________
+ SELF_HIG       1.000
+ EDU_UPP        1.000         1.000
+ EDU_TER        1.000         1.000         1.000
+ WEALTH_2       1.000         1.000         1.000         1.000
+ WEALTH_3       1.000         1.000         1.000         1.000         1.000
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    FEMALE
+      Category 1    0.475          418.418
+      Category 2    0.525          461.582
+    PAT_INT
+      Category 1    0.668          587.997
+      Category 2    0.332          292.003
+    PAT_HIG
+      Category 1    0.569          500.599
+      Category 2    0.431          379.401
+    SELF_INT
+      Category 1    0.720          633.842
+      Category 2    0.280          246.158
+    SELF_HIG
+      Category 1    0.595          523.298
+      Category 2    0.405          356.702
+    EDU_UPP
+      Category 1    0.503          442.457
+      Category 2    0.497          437.543
+    EDU_TER
+      Category 1    0.764          671.970
+      Category 2    0.236          208.030
+    WEALTH_2
+      Category 1    0.634          558.346
+      Category 2    0.366          321.654
+    WEALTH_3
+      Category 1    0.536          471.267
+      Category 2    0.464          408.733
+
+
+
+
+
+RESULTS FOR BASIC ANALYSIS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              FEMALE$1      AGE           PAT_INT$      PAT_HIG$      SELF_INT
+              ________      ________      ________      ________      ________
+               -0.062        62.149         0.435         0.173         0.584
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              SELF_HIG      EDU_UPP$      EDU_TER$      WEALTH_2      WEALTH_3
+              ________      ________      ________      ________      ________
+                0.240         0.007         0.718         0.344         0.089
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              FEMALE        AGE           PAT_INT       PAT_HIG       SELF_INT
+              ________      ________      ________      ________      ________
+ FEMALE
+ AGE           -0.007        48.264
+ PAT_INT       -0.100        -0.018
+ PAT_HIG        0.156        -0.121        -0.962
+ SELF_INT       0.131         0.075         0.125        -0.088
+ SELF_HIG      -0.128        -0.156        -0.115         0.297        -0.935
+ EDU_UPP        0.012         0.059         0.061        -0.086         0.213
+ EDU_TER       -0.118        -0.266        -0.240         0.426        -0.311
+ WEALTH_2      -0.116         0.038         0.115        -0.161         0.051
+ WEALTH_3       0.080        -0.097        -0.147         0.345         0.013
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              SELF_HIG      EDU_UPP       EDU_TER       WEALTH_2      WEALTH_3
+              ________      ________      ________      ________      ________
+ EDU_UPP       -0.130
+ EDU_TER        0.652        -0.947
+ WEALTH_2      -0.181         0.019        -0.178
+ WEALTH_3       0.309        -0.032         0.350        -0.978
+
+
+     STANDARD ERRORS FOR ESTIMATED SAMPLE STATISTICS
+
+
+           S.E. FOR MEANS/INTERCEPTS/THRESHOLDS
+              FEMALE$1      AGE           PAT_INT$      PAT_HIG$      SELF_INT
+              ________      ________      ________      ________      ________
+                0.042         0.276         0.044         0.042         0.045
+
+
+           S.E. FOR MEANS/INTERCEPTS/THRESHOLDS
+              SELF_HIG      EDU_UPP$      EDU_TER$      WEALTH_2      WEALTH_3
+              ________      ________      ________      ________      ________
+                0.043         0.042         0.046         0.043         0.042
+
+
+           S.E. FOR CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              FEMALE        AGE           PAT_INT       PAT_HIG       SELF_INT
+              ________      ________      ________      ________      ________
+ FEMALE
+ AGE            0.037         2.793
+ PAT_INT        0.048         0.040
+ PAT_HIG        0.047         0.037         0.022
+ SELF_INT       0.050         0.039         0.051         0.051
+ SELF_HIG       0.048         0.036         0.050         0.046         0.034
+ EDU_UPP        0.047         0.037         0.049         0.047         0.049
+ EDU_TER        0.054         0.047         0.057         0.048         0.058
+ WEALTH_2       0.048         0.038         0.049         0.048         0.052
+ WEALTH_3       0.047         0.037         0.048         0.044         0.051
+
+
+           S.E. FOR CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              SELF_HIG      EDU_UPP       EDU_TER       WEALTH_2      WEALTH_3
+              ________      ________      ________      ________      ________
+ EDU_UPP        0.048
+ EDU_TER        0.038         0.029
+ WEALTH_2       0.049         0.048         0.055
+ WEALTH_3       0.045         0.047         0.050         0.012
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AGE                  62.149       0.730      38.000    0.11%      55.000     59.000     61.000
+             880.000      48.264      -0.109      86.000    0.11%      62.000     68.000
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    mplus_descriptives_covariates.dat
+
+  Order and format of variables
+
+    FEMALE         F10.3
+    AGE            F10.3
+    PAT_INT        F10.3
+    PAT_HIG        F10.3
+    SELF_INT       F10.3
+    SELF_HIG       F10.3
+    EDU_UPP        F10.3
+    EDU_TER        F10.3
+    WEALTH_2       F10.3
+    WEALTH_3       F10.3
+    WEIGHTS        F10.3
+
+  Save file format
+    11F10.3
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+     Beginning Time:  23:05:33
+        Ending Time:  23:05:33
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen
