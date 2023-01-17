@@ -55,7 +55,7 @@ main_data_new_names <- Complete_case_data %>%
 
 #### Class enumeration #####
 #setting to relative path as MPlus only accepts 90 characters in each line 
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases","Complete_sample"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases","Complete_sample"))
 getwd()
 lca_k1_6 <- lapply(1:9, function(k) {
   lca_enum <- mplusObject(
@@ -109,7 +109,7 @@ LRTSTARTS = 50 10 400 20;",
 
 
 ##### Class enumeration results ####
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases", "Complete_sample"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases", "Complete_sample"))
 getwd()
 
 
@@ -169,7 +169,7 @@ Loglikelihood <- qplot(Title, values, data = results2, color = factor(criterias)
 ggsave(here("Figures","3787_cases","Loglikelihood_Plot_Complete_Sample.png"),Loglikelihood,width=30, height=22, dpi=300, units=c("cm"),limitsize = FALSE)
 
 ##### Step 1 on the  6-class model####
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases", "Complete_sample_selected_model"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases", "Complete_sample_selected_model"))
 getwd()
 
 step1 <- mplusObject(
@@ -5804,7 +5804,7 @@ step3_fit_RESPIR_cov_4 <- mplusModeler(step3,
 
 
 ##### Regressing latent classes on predictors #######
-setwd(here("Data", "Processed_Data", "MPlus_data", "Covariates_Wave9_Only"))
+setwd(here("Data", "Processed_Data", "MPlus_Data", "Covariates_Wave9_Only"))
 getwd()
 
 step1 <- mplusObject(

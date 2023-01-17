@@ -59,16 +59,16 @@ main_data_new_names <- Complete_case_data %>%
 #picked = sample(seq_len(nrow(main_data_new_names)),size = sample_size)
 #Sample_A =main_data_new_names[picked,]
 #Sample_B =main_data_new_names[-picked,]
-#write.csv(Sample_A,here("Data","Processed_Data","MPlus_data","MPlus_3787cases","Split_sample","Sample_A.csv"))
-#write.csv(Sample_B,here("Data","Processed_Data","MPlus_data","MPlus_3787cases","Split_sample","Sample_B.csv"))
+#write.csv(Sample_A,here("Data","Processed_Data","MPlus_Data","MPlus_3787cases","Split_sample","Sample_A.csv"))
+#write.csv(Sample_B,here("Data","Processed_Data","MPlus_Data","MPlus_3787cases","Split_sample","Sample_B.csv"))
 
 #
-Sample_A <- read_csv(here("Data","Processed_Data","MPlus_data","MPlus_3787cases","Split_sample","Sample_A.csv"))
+Sample_A <- read_csv(here("Data","Processed_Data","MPlus_Data","MPlus_3787cases","Split_sample","Sample_A.csv"))
 
 Sample_A <- Sample_A %>% 
   dplyr::select(-1)
 
-Sample_B <- read_csv(here("Data","Processed_Data","MPlus_data","MPlus_3787cases","Split_sample","Sample_B.csv"))
+Sample_B <- read_csv(here("Data","Processed_Data","MPlus_Data","MPlus_3787cases","Split_sample","Sample_B.csv"))
 
 Sample_B <- Sample_B %>% 
   dplyr::select(-1)
@@ -76,7 +76,7 @@ Sample_B <- Sample_B %>%
 
 #### SAMPLE A : Class enumeration #####
 #setting to relative path as MPlus only accepts 90 characters in each line 
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleA"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleA"))
 getwd()
 lca_k1_6 <- lapply(1:9, function(k) {
   lca_enum <- mplusObject(
@@ -130,7 +130,7 @@ LRTSTARTS = 50 10 400 20;",
 
 
 ##### Step 1 for SAMPLE A ####
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleA"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleA"))
 getwd()
 
 
@@ -1272,7 +1272,7 @@ ggsave(here("Figures","3787_cases","LCA_7class_SampleA.pdf"),final_plot,width=30
 
 #### SAMPLE B : Class enumeration #####
 #setting to relative path as MPlus only accepts 90 characters in each line 
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleB"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleB"))
 getwd()
 lca_k1_6 <- lapply(1:9, function(k) {
   lca_enum <- mplusObject(
@@ -1326,7 +1326,7 @@ LRTSTARTS = 50 10 400 20;",
 
 
 ##### Step 1 for SAMPLE B ####
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleB"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases","Split_sample", "Class_enumeration_SampleB"))
 getwd()
 
 output_enum <- readModels("./")
@@ -2470,7 +2470,7 @@ ggsave(here("Figures","3787_cases","LCA_7class_SampleB.pdf"),final_plot,width=30
 
 #### Complete sample : Class enumeration #####
 #setting to relative path as MPlus only accepts 90 characters in each line 
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases","Complete_sample"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases","Complete_sample"))
 getwd()
 lca_k1_6 <- lapply(1:9, function(k) {
   lca_enum <- mplusObject(
@@ -2524,7 +2524,7 @@ LRTSTARTS = 50 10 400 20;",
 
 
 ##### Step 1 for Complete Sample ####
-setwd(here("Data", "Processed_Data", "MPlus_data","MPlus_3787cases", "Complete_sample"))
+setwd(here("Data", "Processed_Data", "MPlus_Data","MPlus_3787cases", "Complete_sample"))
 getwd()
 
 
