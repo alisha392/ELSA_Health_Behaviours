@@ -1,8 +1,13 @@
-# ELSA_Health_Behaviours
+# Description
 
 This repository contains code used in the statsistical analysis for the paper titled 
 "Longitudinal clustering of health behaviours and their association with multimorbidity in older adults in England: A latent class analysis"
 by Alisha Suhag, Thomas L. Webb and John Holmes
+
+
+The research analyses data from a longitudinal panel of older adults in England to: i) explore how the SNAP behaviours (i.e. smoking, unhealthy nutrition, alcohol consumption and physical inactivity) cluster over time in older adults, ii) investigate how membership in different behavioural clusters varies by socio-demographic characteristics, and iii) examine which, if any, behavioural clusters are prospectively associated with multimorbidity over time.  
+
+# Prerequisites
 
 The data used in the analysis can be accessed on UK Data Service :
 
@@ -10,13 +15,14 @@ Banks, J., Batty, G. David, Breedvelt, J., Coughlin, K., Crawford, R., Marmot, M
 Steel, N., Steptoe, A., Wood, M., Zaninotto, P. (2022). English Longitudinal Study of Ageing: Waves 0-9, 1998-2019.
 [data collection]. 37th Edition. UK Data Service. SN: 5050, DOI: 10.5255/UKDA-SN-5050-24
 
-
 The workflow from the project has been maintained in the repository. For replicating the study or using the current code for analysing ELSA data, 
 you can add the data downloaded from UK Data Service in the Data/Raw_Data/Original_ELSA_Data folder. 
 
-All the dependencies (with versions) are stored in the 'renv' folder. To run the code, use the scripts in the 'Scripts' folder in the order they are provided.
+# Dependencies
 
-For any queries regarding the code, email asuhag1@sheffield.ac.uk.
+All the dependencies (with package versions) are stored in the 'renv' folder. To run the code, use the scripts in the 'Scripts' folder in the order they are provided.
+
+# License
 
 This code is protected by the MIT License :
 
@@ -41,4 +47,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+# Citation
+
+
+# Contact
+For any queries regarding the code, email alishasuhag@gmail.com.
 
