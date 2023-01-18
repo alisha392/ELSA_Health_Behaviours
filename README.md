@@ -14,7 +14,7 @@ Steel, N., Steptoe, A., Wood, M., Zaninotto, P. (2022). English Longitudinal Stu
 The workflow from the project has been maintained in the repository. For replicating the study or using the current code for analysing ELSA data, 
 you can add the data downloaded from UK Data Service in the Data/Raw_Data/Original_ELSA_Data folder. 
 
-All the dependencies (with versions) are stored in the renv folder. To run the code, use the scripts in the 'Scripts' folder in the order they are provided.
+All the dependencies (with versions) are stored in the 'renv' folder. To run the code, use the scripts in the 'Scripts' folder in the order they are provided.
 
 For any queries regarding the code, email asuhag1@sheffield.ac.uk.
 
