@@ -50,7 +50,10 @@ SOFTWARE.
 
 # Citation
 
+[![DOI](https://zenodo.org/badge/589046529.svg)](https://zenodo.org/badge/latestdoi/589046529)
+
 
 # Contact
+
 For any queries regarding the code, email alishasuhag@gmail.com.
 
