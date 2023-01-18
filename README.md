@@ -5,7 +5,7 @@ This repository contains code used in the statsistical analysis for the paper ti
 by Alisha Suhag, Thomas L. Webb and John Holmes
 
 
-The research analyses data from a longitudinal panel of older adults in England to: i) explore how the SNAP behaviours (i.e. smoking, unhealthy nutrition, alcohol consumption and physical inactivity) cluster over time in older adults, ii) investigate how membership in different behavioural clusters varies by socio-demographic characteristics, and iii) examine which, if any, behavioural clusters are prospectively associated with multimorbidity over time.  
+Using repeated measures latent class analysis, this research analyses data from a longitudinal panel of older adults in England to: i) explore how the SNAP behaviours (i.e. smoking, unhealthy nutrition, alcohol consumption and physical inactivity) cluster over time in older adults, ii) investigate how membership in different behavioural clusters varies by socio-demographic characteristics, and iii) examine which, if any, behavioural clusters are prospectively associated with multimorbidity over time.  
 
 # Prerequisites
 
