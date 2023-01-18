@@ -16,7 +16,7 @@ Steel, N., Steptoe, A., Wood, M., Zaninotto, P. (2022). English Longitudinal Stu
 [data collection]. 37th Edition. UK Data Service. SN: 5050, DOI: 10.5255/UKDA-SN-5050-24
 
 The workflow from the project has been maintained in the repository. For replicating the study or using the current code for analysing ELSA data, 
-you can add the data downloaded from UK Data Service in the Data/Raw_Data/Original_ELSA_Data folder. 
+you can add the data downloaded from UK Data Service to the Data/Raw_Data/Original_ELSA_Data folder. 
 
 # Dependencies
 
